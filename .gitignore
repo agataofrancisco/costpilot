@@ -1,0 +1,27 @@
+# Ambientes e dependências
+.venv/
+venv/
+node_modules/
+
+# Caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Segredos e configuração local
+.env
+.env.*
+!.env.example
+
+# Dados de execução (SQLite, logs)
+data/
+*.db
+*.sqlite3
+*.log
+
+# Build do frontend
+frontend/dist/

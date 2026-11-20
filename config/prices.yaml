@@ -1,0 +1,30 @@
+# Tabela de preços versionada do CostPilot. Fonte única de preços para a política.
+# Cada linha vale a partir de `effective_date`; um pedido usa a linha mais recente cuja data
+# é anterior ou igual à data do pedido. Só USD é aceite.
+#
+# ATENÇÃO: os preços `mock-*` são FICTÍCIOS e servem para simulação e testes.
+# Para providers reais, acrescentar linhas com a fonte oficial e a data de consulta.
+# Um modelo sem linha em vigor fica excluído com `pricing_missing`.
+currency: USD
+prices:
+  - model: mock-cheap
+    input_per_mtok: 0.20
+    output_per_mtok: 0.80
+    effective_date: 2025-01-01
+    source: "fictício: preço anterior (demonstra versionamento)"
+  - model: mock-cheap
+    input_per_mtok: 0.10
+    output_per_mtok: 0.40
+    cached_input_per_mtok: 0.05
+    effective_date: 2026-01-01
+    source: "fictício (simulação mock)"
+  - model: mock-mid
+    input_per_mtok: 0.50
+    output_per_mtok: 1.50
+    effective_date: 2026-01-01
+    source: "fictício (simulação mock)"
+  - model: mock-strong
+    input_per_mtok: 3.00
+    output_per_mtok: 15.00
+    effective_date: 2026-01-01
+    source: "fictício (simulação mock)"

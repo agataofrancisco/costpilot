@@ -1,0 +1,6 @@
+pyproject.toml
+costpilot.egg-info/PKG-INFO
+costpilot.egg-info/SOURCES.txt
+costpilot.egg-info/dependency_links.txt
+costpilot.egg-info/requires.txt
+costpilot.egg-info/top_level.txt
