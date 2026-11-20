@@ -1,4 +1,4 @@
-# Ambientes e dependências
+# Ambientes e dependÃªncias
 .venv/
 venv/
 node_modules/
@@ -12,12 +12,12 @@ __pycache__/
 .coverage
 htmlcov/
 
-# Segredos e configuração local
+# Segredos e configuraÃ§Ã£o local
 .env
 .env.*
 !.env.example
 
-# Dados de execução (SQLite, logs)
+# Dados de execuÃ§Ã£o (SQLite, logs)
 data/
 *.db
 *.sqlite3
@@ -26,5 +26,5 @@ data/
 # Build do frontend
 frontend/dist/
 
-# Metadados de build (instala��o edit�vel)
+# Metadados de build (instalacao editavel)
 *.egg-info/
