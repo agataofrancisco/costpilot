@@ -1,0 +1,117 @@
+# Catálogo de modelos (fonte única de capacidades). Validado no arranque.
+#
+# - Capacidades declaradas (supports_*) são verificadas por sondas (backend/app/catalog/probes.py).
+#   Uma capacidade falsa fica como `capability_mismatch` e o modelo é excluído dessas tarefas.
+# - prior_success: crença inicial de sucesso por tipo de tarefa (0..1). Pesa pouco quando há dados.
+# - Modelos com provider `mock` têm perfil de simulação. Os perfis e os preços `mock-*` são FICTÍCIOS:
+#   servem para demo, benchmark e testes, e os resultados são marcados como `simulated`.
+# - Modelos reais estão declarados com TODO: sem linha de preço em config/prices.yaml ficam excluídos
+#   com `pricing_missing`, o que é o comportamento pretendido até haver preço verificado.
+models:
+  - id: mock-cheap
+    provider: mock
+    context_window: 8000
+    supports_json_mode: true
+    supports_tools: false
+    typical_latency_ms: 300
+    allow_sensitive: true
+    enabled: true
+    prior_success:
+      classification: 0.9
+      json_extraction: 0.8
+      multi_step_reasoning: 0.6
+      doc_qa: 0.75
+    mock:
+      quality:
+        classification: 0.9
+        json_extraction: 0.8
+        multi_step_reasoning: 0.45
+        doc_qa: 0.7
+      failure_rate: 0.02
+      latency_ms: 300
+      json_mode_honest: true
+      reports_usage: true
+
+  - id: mock-mid
+    provider: mock
+    context_window: 32000
+    supports_json_mode: true
+    supports_tools: true
+    typical_latency_ms: 800
+    allow_sensitive: true
+    enabled: true
+    prior_success:
+      classification: 0.95
+      json_extraction: 0.9
+      multi_step_reasoning: 0.75
+      doc_qa: 0.9
+    mock:
+      quality:
+        classification: 0.95
+        json_extraction: 0.92
+        multi_step_reasoning: 0.75
+        doc_qa: 0.9
+      failure_rate: 0.01
+      latency_ms: 800
+      json_mode_honest: true
+      reports_usage: true
+
+  - id: mock-strong
+    provider: mock
+    context_window: 128000
+    supports_json_mode: true
+    supports_tools: true
+    typical_latency_ms: 2000
+    allow_sensitive: true
+    enabled: true
+    prior_success:
+      classification: 0.98
+      json_extraction: 0.97
+      multi_step_reasoning: 0.95
+      doc_qa: 0.96
+    mock:
+      quality:
+        classification: 0.99
+        json_extraction: 0.98
+        multi_step_reasoning: 0.95
+        doc_qa: 0.97
+      failure_rate: 0.005
+      latency_ms: 2000
+      json_mode_honest: true
+      reports_usage: true
+
+  # Declara JSON mode mas não o cumpre: serve para demonstrar capability_mismatch.
+  - id: mock-liar
+    provider: mock
+    context_window: 16000
+    supports_json_mode: true
+    supports_tools: false
+    typical_latency_ms: 200
+    allow_sensitive: true
+    enabled: true
+    prior_success:
+      classification: 0.9
+      json_extraction: 0.9
+      multi_step_reasoning: 0.5
+      doc_qa: 0.8
+    mock:
+      quality:
+        classification: 0.9
+        json_extraction: 0.9
+        multi_step_reasoning: 0.4
+        doc_qa: 0.8
+      failure_rate: 0.0
+      latency_ms: 200
+      json_mode_honest: false
+      reports_usage: true
+
+  # Modelo real sem preço verificado: TODO confirmar capacidades e preço na página do provider.
+  - id: openai/gpt-4o-mini
+    provider: openai_compatible
+    context_window: 128000  # TODO: confirmar
+    supports_json_mode: true  # TODO: confirmar
+    supports_tools: true  # TODO: confirmar
+    typical_latency_ms: 1000  # TODO: medir
+    allow_sensitive: false
+    enabled: true
+    prior_success: {}

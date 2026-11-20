@@ -95,6 +95,10 @@ def _scenario(model: str) -> tuple[int, Any]:
         return 200, _ok_body(model, usage=usage)
     if model == "timeout":
         return 200, _ok_body(model)
+    if model == "jsonok":
+        return 200, _ok_body(model, text='{"ok": true}')
+    if model == "jsonlie":
+        return 200, _ok_body(model, text="Claro! Aqui está a resposta.")
     return 200, _ok_body(model)
 
 

@@ -10,8 +10,8 @@
 
 ## 2. Catálogo
 
-- [ ] 2.1 Implementar o catálogo por configuração ligado à tabela de preços e a exclusão `pricing_missing`; verificar com testes
-- [ ] 2.2 Implementar as sondas de capacidade (mock/real) e `capability_mismatch`; verificar com teste de JSON mode falso
+- [x] 2.1 Implementar o catálogo por configuração ligado à tabela de preços e a exclusão `pricing_missing`; verificar com testes
+- [x] 2.2 Implementar as sondas de capacidade (mock/real) e `capability_mismatch`; verificar com teste de JSON mode falso
 - [ ] 2.3 Implementar o histórico por `(modelo, task_type)` com prior Beta a partir do registo de uso; verificar com teste de actualização e de `low_success_rate`
 
 ## 3. Política e execução

@@ -1,0 +1,23 @@
+# Política de routing (parâmetros, não código). Alterar aqui muda a decisão sem republicar.
+#
+# quality_targets: restrição de qualidade. Um candidato só é elegível se a crença de sucesso
+#                  (posterior Beta) para o tipo de tarefa for >= alvo.
+# prior_strength:  pseudo-contagem k da prior Beta. alpha = k*prior + sucessos, beta = k*(1-prior) + falhas.
+# min_latency_samples: abaixo deste número de amostras usa-se `typical_latency_ms` do catálogo.
+# history_window:  quantas tentativas recentes entram no histórico por (modelo, tipo de tarefa).
+# default_output_tokens: tokens de saída usados para estimar o custo antes de a resposta existir.
+# max_attempts:    limite duro de tentativas por pedido (incluindo escalonamentos).
+quality_targets:
+  classification: 0.85
+  json_extraction: 0.8
+  multi_step_reasoning: 0.8
+  doc_qa: 0.8
+prior_strength: 4
+min_latency_samples: 5
+history_window: 200
+default_output_tokens:
+  classification: 16
+  json_extraction: 128
+  multi_step_reasoning: 256
+  doc_qa: 192
+max_attempts: 3

@@ -28,3 +28,8 @@ prices:
     output_per_mtok: 15.00
     effective_date: 2026-01-01
     source: "fictício (simulação mock)"
+  - model: mock-liar
+    input_per_mtok: 0.10
+    output_per_mtok: 0.40
+    effective_date: 2026-01-01
+    source: "fictício (simulação mock)"

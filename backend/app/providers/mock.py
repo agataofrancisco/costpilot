@@ -72,11 +72,8 @@ class MockAdapter:
         if request.json_mode and not profile.json_mode_honest:
             return "Aqui está o resultado: {nao-e-json"
         if not correct:
-            return (
-                '{"erro": "resposta incorrecta simulada"'
-                if request.json_mode
-                else "RESPOSTA_ERRADA"
-            )
+            # Resposta errada continua a ser JSON válido: a capacidade é honesta, o conteúdo não.
+            return '{"resultado": "incorrecto"}' if request.json_mode else "RESPOSTA_ERRADA"
         if self._oracle is not None:
             expected = self._oracle(request)
             if expected is not None:

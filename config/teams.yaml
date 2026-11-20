@@ -1,0 +1,22 @@
+# Equipas da Órbita Tech (demo). Chaves do nome: [a-z0-9_-].
+#
+# budget_usd:        orçamento hard-limit. É cumulativo: não há reposição automática (TODO: janela mensal).
+# fixed_model:       modelo usado quando o autopilot está desligado (decisão `autopilot_disabled`).
+# autopilot_default: valor inicial do interruptor. Um admin pode mudá-lo por API, sem republicar.
+teams:
+  suporte:
+    budget_usd: 5.00
+    fixed_model: mock-mid
+    autopilot_default: true
+  marketing:
+    budget_usd: 2.00
+    fixed_model: mock-strong
+    autopilot_default: false
+  dados:
+    budget_usd: 3.00
+    fixed_model: mock-cheap
+    autopilot_default: true
+  bench:
+    budget_usd: 50.00
+    fixed_model: mock-strong
+    autopilot_default: true
