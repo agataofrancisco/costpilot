@@ -25,3 +25,6 @@ data/
 
 # Build do frontend
 frontend/dist/
+
+# Metadados de build (instalação editável)
+*.egg-info/
