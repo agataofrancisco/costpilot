@@ -4,7 +4,7 @@
 > e perfis fictícios. Não são poupanças reais e não devem ser usados como prova de portefólio.
 
 - Data: 2026-11-21
-- Commit: d397900 (árvore com alterações não commitadas: sim)
+- Commit: 789510e (árvore com alterações não commitadas: sim)
 - Modo: mock (simulated)
 - Modelos: mock-cheap, mock-liar, mock-mid, mock-strong, openai/gpt-4o-mini
 - Dataset: `bench/costpilot/tasks.jsonl` (100 tarefas sintéticas, seed 42)

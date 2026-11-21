@@ -11,7 +11,7 @@ from app.main import create_app
 from app.providers.base import ChatRequest, ChatResponse, Usage
 from fastapi.testclient import TestClient
 
-from tests.support import build_test_app, standard_setup, team
+from tests.support import AUTH, build_test_app, standard_setup, team
 from tests.test_execute import classification_body, mock_adapter
 
 
@@ -54,7 +54,9 @@ def test_stale_price_is_refused_instead_of_using_a_guess(tmp_path: Path):
     client = TestClient(create_app(settings, container))
 
     response = client.post(
-        "/route", json={"task_type": "classification", "input_tokens": 10, "team": "suporte"}
+        "/route",
+        json={"task_type": "classification", "input_tokens": 10},
+        headers=AUTH["suporte"],
     )
 
     assert response.status_code == 422
@@ -95,13 +97,11 @@ def test_same_request_in_two_tenants_never_shares_cache(tmp_path: Path):
         teams={"suporte": team("5")},
         adapters={"mock": mock_adapter(models)},
     )
-    body_a = classification_body(cache=True, temperature=0)
-    body_a["task"]["tenant_id"] = "cliente-a"
-    body_b = classification_body(cache=True, temperature=0)
-    body_b["task"]["tenant_id"] = "cliente-b"
+    # Mesmo pedido, chaves de tenants diferentes (mesma equipa): a identidade vem da chave.
+    body = classification_body(cache=True, temperature=0)
 
-    client.post("/execute", json=body_a)
-    second = client.post("/execute", json=body_b)
+    client.post("/execute", json=body, headers=AUTH["cliente-a"])
+    second = client.post("/execute", json=body, headers=AUTH["cliente-b"])
 
     assert second.json()["cache"] == "miss"
 

@@ -10,7 +10,7 @@ from app.providers.base import ChatRequest
 from app.providers.mock import MockAdapter, MockProfile
 from app.providers.modelmesh import build_modelmesh_adapter
 
-from tests.support import build_test_app, price_row, standard_setup, team
+from tests.support import AUTH, build_test_app, price_row, standard_setup, team
 
 ORACLE_ANSWERS = {
     "json_extraction": '{"nome": "Ana"}',
@@ -59,7 +59,6 @@ def json_body(**overrides) -> dict:
             "task_type": "json_extraction",
             "input_tokens": 10,
             "requires_json": True,
-            "team": "suporte",
         },
         "messages": [{"role": "user", "content": "extrai o nome"}],
         "max_output_tokens": 128,
@@ -69,9 +68,10 @@ def json_body(**overrides) -> dict:
     return body
 
 
-def classification_body(team_name: str = "suporte", **overrides) -> dict:
+def classification_body(**overrides) -> dict:
+    """Corpo sem equipa: a equipa vem da chave enviada em `headers=AUTH[...]`."""
     body = {
-        "task": {"task_type": "classification", "input_tokens": 10, "team": team_name},
+        "task": {"task_type": "classification", "input_tokens": 10},
         "messages": [{"role": "user", "content": "classifica o sentimento"}],
         "max_output_tokens": 16,
         "validation": {"labels": ["positivo", "negativo", "neutro"]},
@@ -226,9 +226,11 @@ def test_cache_never_crosses_teams(tmp_path):
         adapters={"mock": mock_adapter(models)},
     )
     suporte = client.post(
-        "/execute", json=classification_body("suporte", cache=True, temperature=0)
+        "/execute", json=classification_body(cache=True, temperature=0), headers=AUTH["suporte"]
     )
-    dados = client.post("/execute", json=classification_body("dados", cache=True, temperature=0))
+    dados = client.post(
+        "/execute", json=classification_body(cache=True, temperature=0), headers=AUTH["dados"]
+    )
 
     assert suporte.json()["cache"] == "miss"
     assert dados.json()["cache"] == "miss"
@@ -271,7 +273,6 @@ def test_high_sensitivity_never_reaches_unauthorized_model(tmp_path):
             task={
                 "task_type": "classification",
                 "input_tokens": 10,
-                "team": "suporte",
                 "sensitivity": "high",
             }
         ),
@@ -334,7 +335,9 @@ def test_policy_override_forces_a_baseline_when_enabled(tmp_path):
     )
 
     response = client.post(
-        "/execute", json=classification_body("bench", policy_override={"model": "mock-strong"})
+        "/execute",
+        json=classification_body(policy_override={"model": "mock-strong"}),
+        headers=AUTH["bench"],
     )
 
     assert response.status_code == 200
@@ -350,13 +353,17 @@ def test_concurrent_requests_never_overspend_the_team_budget(tmp_path):
         tmp_path,
         models=models,
         prices=prices,
-        teams={"suporte": team("0.0005")},  # 500 micro-USD
+        # 100 micro-USD: o limite é atingido mesmo se os pedidos correrem em sequência,
+        # por isso a recusa (402) não depende da ordem de execução.
+        teams={"suporte": team("0.0001")},
         adapters={"mock": mock_adapter(models)},
     )
 
     async def run():
         transport = httpx.ASGITransport(app=app)
-        async with httpx.AsyncClient(transport=transport, base_url="http://test") as http:
+        async with httpx.AsyncClient(
+            transport=transport, base_url="http://test", headers=AUTH["suporte"]
+        ) as http:
             return await asyncio.gather(
                 *[
                     http.post("/execute", json=classification_body(max_output_tokens=16))
@@ -370,7 +377,7 @@ def test_concurrent_requests_never_overspend_the_team_budget(tmp_path):
     assert set(statuses) <= {200, 402}
     assert 200 in statuses and 402 in statuses
     snapshot = container.budget.snapshot("suporte")
-    assert snapshot.spent_micro <= 500
+    assert snapshot.spent_micro <= 100
     assert snapshot.reserved_micro == 0
 
     # Custo contabilizado = respostas 200 + tentativas já gastas dentro de respostas 402
@@ -396,7 +403,8 @@ def test_unknown_team_is_forbidden(tmp_path):
         teams={"suporte": team("5")},
         adapters={"mock": mock_adapter(models)},
     )
-    response = client.post("/execute", json=classification_body("marketing"))
+    # A chave de marketing existe, mas a equipa não está em teams.yaml deste teste.
+    response = client.post("/execute", json=classification_body(), headers=AUTH["marketing"])
     assert response.status_code == 403
     assert response.json()["code"] == "team_not_configured"
 

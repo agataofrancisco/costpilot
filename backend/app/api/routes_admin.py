@@ -10,11 +10,12 @@ import json
 
 from fastapi import APIRouter, Depends, Header, Request
 
-from app.api.errors import AdminDisabled, NotFound, Unauthorized
+from app.api.errors import AdminDisabled, NotFound
 from app.api.schemas import AutopilotUpdate
 from app.api.serializers import usd
 from app.catalog.probes import run_capability_probes
 from app.config import REPO_ROOT
+from app.routing.errors import Unauthorized
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 

@@ -12,6 +12,7 @@ from pydantic import SecretStr
 from app.accounting.db import init_schema, make_engine, make_session_factory
 from app.accounting.repository import UsageRepository
 from app.accounting.settings_repo import TeamSettingsRepository
+from app.auth.clients import ClientRegistry
 from app.budget.redis_store import RedisBudgetStore
 from app.budget.store import BudgetStore, InMemoryBudgetStore
 from app.cache.store import MemoryResponseCache, RedisResponseCache, ResponseCache
@@ -37,6 +38,7 @@ def utc_now() -> datetime:
 class Container:
     settings: Settings
     catalog: Catalog
+    clients: ClientRegistry
     registry: ProbeRegistry
     adapters: dict[str, ProviderAdapter]
     budget: BudgetStore
@@ -92,6 +94,7 @@ def build_container(
     policy = load_policy(settings.config_dir / "policy.yaml")
     teams = load_teams(settings.config_dir / "teams.yaml")
     catalog.ensure_known(team.fixed_model for team in teams.values())
+    clients = ClientRegistry.load(settings.clients_file or settings.config_dir / "clients.yaml")
     wired_adapters = build_adapters(settings, catalog, adapters)
 
     if settings.redis_url:
@@ -128,6 +131,7 @@ def build_container(
     return Container(
         settings=settings,
         catalog=catalog,
+        clients=clients,
         registry=registry,
         adapters=wired_adapters,
         budget=budget,

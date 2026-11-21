@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from tests.support import build_test_app, standard_setup, team
+from tests.support import AUTH, build_test_app, standard_setup, team
 from tests.test_execute import classification_body, mock_adapter
 
 HEADERS = {"x-admin-token": "token-de-teste"}
@@ -22,8 +22,8 @@ def _client(tmp_path):
 
 def test_usage_summary_groups_cost_by_team_provider_and_task(tmp_path):
     client = _client(tmp_path)
-    client.post("/execute", json=classification_body("suporte"))
-    client.post("/execute", json=classification_body("dados"))
+    client.post("/execute", json=classification_body(), headers=AUTH["suporte"])
+    client.post("/execute", json=classification_body(), headers=AUTH["dados"])
 
     body = client.get("/admin/usage/summary", headers=HEADERS).json()
 
@@ -39,8 +39,8 @@ def test_usage_summary_groups_cost_by_team_provider_and_task(tmp_path):
 
 def test_recent_attempts_are_newest_first_and_capped(tmp_path):
     client = _client(tmp_path)
-    client.post("/execute", json=classification_body("suporte", task_id="rec-1"))
-    client.post("/execute", json=classification_body("suporte", task_id="rec-2"))
+    client.post("/execute", json=classification_body(task_id="rec-1"), headers=AUTH["suporte"])
+    client.post("/execute", json=classification_body(task_id="rec-2"), headers=AUTH["suporte"])
 
     rows = client.get("/admin/usage/recent?limit=1", headers=HEADERS).json()
 

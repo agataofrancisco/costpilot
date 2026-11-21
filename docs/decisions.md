@@ -31,6 +31,10 @@
 | Prior Beta com pseudo-contagem `k` | Frequência simples | Estável com poucas amostras |
 | Validação programática | Juiz LLM | Determinística; juiz exige calibração antes de contar |
 | Cache com tenant e equipa na chave | Verificação posterior | O isolamento é propriedade da chave |
+| Equipa e tenant vêm da chave de API, nunca do corpo | Equipa no corpo (confiança no cliente) | Sem isto, qualquer cliente gasta o orçamento de outra equipa e lê/polui a cache de outro tenant. Corpo com `team`/`tenant_id` -> 422 (rejeitar, não ignorar: o erro fica visível para quem integra) |
+| Chaves guardadas só como SHA-256 | Chave em claro no ficheiro | Se o ficheiro vazar, não há chaves utilizáveis. SHA-256 chega porque as chaves são aleatórias de alta entropia (não são palavras-passe; ver Q no 07) |
+| Comparação de todos os digests em tempo constante | `dict` lookup direto | Não revela pela duração qual chave existe |
+| Falhar fechado: sem ficheiro de clientes, o arranque falha; sem chave válida, 401 | Arrancar sem autenticação | Evita um serviço aberto por erro de configuração |
 | Factory `create_app` | `app` global | Não constrói BD nem providers ao importar |
 | Providers mock com seed | Chamadas reais no benchmark | Reproduzível e sem custo; resultado marcado simulado |
 

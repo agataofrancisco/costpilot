@@ -15,6 +15,11 @@ class RoutingError(Exception):
         self.details = details
 
 
+class Unauthorized(RoutingError):
+    status_code = 401
+    code = "unauthorized"
+
+
 class TeamNotConfigured(RoutingError):
     status_code = 403
     code = "team_not_configured"

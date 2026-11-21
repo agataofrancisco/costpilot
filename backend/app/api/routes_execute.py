@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Request, Response
 
+from app.api.auth import AuthenticatedPrincipal
 from app.api.schemas import ExecuteRequest
 from app.api.serializers import result_json
 from app.routing.executor import ExecuteCall
@@ -10,10 +11,15 @@ router = APIRouter()
 
 
 @router.post("/execute")
-async def execute(body: ExecuteRequest, request: Request, response: Response) -> dict:
+async def execute(
+    body: ExecuteRequest,
+    request: Request,
+    response: Response,
+    principal: AuthenticatedPrincipal,
+) -> dict:
     container = request.app.state.container
     call = ExecuteCall(
-        task=body.task,
+        task=body.task.to_task(principal),
         messages=[{"role": m.role, "content": m.content} for m in body.messages],
         temperature=body.temperature,
         max_output_tokens=body.max_output_tokens,

@@ -35,7 +35,8 @@ TASKS_PATH = BENCH_DIR / "tasks.jsonl"
 REPORTS_DIR = REPO_ROOT / "reports"
 DATA_DIR = REPO_ROOT / "data" / "bench"
 SEED = 7
-TEAM = "bench"
+# Chave de DEMO da equipa bench (ver config/clients.yaml). A equipa vem da chave, nunca do corpo.
+BENCH_KEY = "cp-demo-bench-2026"
 POLICIES: dict[str, str | None] = {
     "always_expensive": "mock-strong",
     "always_cheap": "mock-cheap",
@@ -157,13 +158,13 @@ def run_policy(name: str, override: str | None, tasks: list[dict[str, Any]]) -> 
     app = create_app(settings, container)
     records: list[dict] = []
     with TestClient(app) as client:
+        client.headers["Authorization"] = f"Bearer {BENCH_KEY}"
         for task in tasks:
             body: dict[str, Any] = {
                 "task": {
                     "task_type": task["task_type"],
                     "input_tokens": task["input_tokens"],
                     "requires_json": task["requires_json"],
-                    "team": TEAM,
                 },
                 "messages": task["messages"],
                 "max_output_tokens": 256,

@@ -30,8 +30,11 @@ API (factory, para não construir nada ao importar):
 
 ```bash
 COSTPILOT_ADMIN_TOKEN=troca-isto uvicorn app.main:create_app --factory --app-dir backend --port 8000
-curl -s -X POST http://127.0.0.1:8000/route -H "content-type: application/json" \
-  -d '{"task_type":"json_extraction","input_tokens":500,"requires_json":true,"team":"suporte","cost_ceiling_usd":"0.002"}'
+# A equipa e o tenant vêm da chave de API (DEMO: cp-demo-suporte-2026). O corpo NÃO aceita team/tenant_id.
+curl -s -X POST http://127.0.0.1:8000/route \
+  -H "content-type: application/json" -H "authorization: Bearer cp-demo-suporte-2026" \
+  -d '{"task_type":"json_extraction","input_tokens":500,"requires_json":true,"cost_ceiling_usd":"0.002"}'
+# Sem chave ou com chave inválida: 401. Com "team" ou "tenant_id" no corpo: 422.
 ```
 
 Painel (proxy `/admin` para `127.0.0.1:8000`):
@@ -53,6 +56,10 @@ python bench/costpilot/counterfactual.py
 - `config/prices.yaml`: tabela de preços versionada (`effective_date`, USD, fonte).
 - `config/policy.yaml`: alvos de qualidade, prior, limites de tentativas.
 - `config/teams.yaml`: orçamento por equipa, modelo fixo e valor inicial do autopilot.
+- `config/clients.yaml`: chaves de API → (tenant, equipa), só com SHA-256. Chaves de demo:
+  `cp-demo-suporte-2026`, `cp-demo-marketing-2026`, `cp-demo-dados-2026`, `cp-demo-bench-2026`
+  (**só para demonstração**). Produção: `COSTPILOT_CLIENTS_FILE` aponta para um ficheiro fora do repositório.
+  Gerar um digest: `python -m app.auth.clients hash <chave>`.
 - Variáveis de ambiente com prefixo `COSTPILOT_` (ver `backend/app/config.py`). **Não há `.env.example` nesta versão**
   (escrita bloqueada por regra de permissões): as variáveis estão documentadas em `backend/app/config.py`.
 
@@ -62,7 +69,8 @@ python bench/costpilot/counterfactual.py
   `-m redis` existe e fica ignorado sem `COSTPILOT_TEST_REDIS_URL`.
 - **Painel não verificado no browser.** O build passa; a verificação visual ficou pendente.
 - **Docker e docker-compose não testados localmente** (Docker não disponível).
-- **Sem autenticação de cliente.** `team` e `tenant_id` vêm do pedido. Ver `docs/security-review.md`.
+- **Autenticação só por chave estática (demo).** A equipa e o tenant vêm da chave (`config/clients.yaml`, só
+  SHA-256). Faltam gestão de chaves, rotação, RBAC e limites de taxa para produção. Ver `docs/security-review.md`.
 - **Sem migrações Alembic.** O esquema é criado no arranque (`create_all`).
 - **Sem reposição mensal de orçamento.** O orçamento é cumulativo.
 

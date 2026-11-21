@@ -1,0 +1,25 @@
+# Clientes da API (autenticação por chave). Só o SHA-256 de cada chave fica aqui.
+#
+# DEMO: as entradas abaixo são chaves de demonstração da Órbita Tech. As chaves em claro são
+#   cp-demo-<equipa>-2026   (ex.: cp-demo-suporte-2026). Nunca usar em produção.
+# PRODUÇÃO: apontar COSTPILOT_CLIENTS_FILE para um ficheiro fora do repositório, com digests
+#   gerados por `python -m app.auth.clients hash <chave>`, e rodar as chaves periodicamente.
+#
+# Um principal é fixo: a equipa e o tenant vêm desta entrada, nunca do corpo do pedido.
+clients:
+  - name: demo-suporte
+    tenant_id: orbita-tech
+    team: suporte
+    key_sha256: a967a641498c9755d3ab5bf3810436f9020a8f1c677ff30423d1d9ad740ecefd
+  - name: demo-marketing
+    tenant_id: orbita-tech
+    team: marketing
+    key_sha256: 66d57d78a8027bb70d8861426f17635228945cecf30b4f9231ccc05aa3d84001
+  - name: demo-dados
+    tenant_id: orbita-tech
+    team: dados
+    key_sha256: 3af530650ed00abac144a0e9ab503d84f62e54dedff6fb595fbf5a497306aa45
+  - name: demo-bench
+    tenant_id: orbita-tech
+    team: bench
+    key_sha256: 9fcf517d1b367ba5dbd312ca3e3b5931c4618dbc00f14e6a953f2563e2131a6f

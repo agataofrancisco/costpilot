@@ -80,7 +80,9 @@ Hoje, o orçamento aceita o custo real e fica acima do limite nesse caso. É uma
 ## Cache
 
 **21. Como garantes que duas equipas nunca partilham uma resposta?**
-Tenant e equipa estão na chave (SHA-256). Não há verificação posterior. `test_cache_never_crosses_teams`.
+Tenant e equipa estão na chave de cache, e vêm do principal da chave de API, não do corpo. Não há verificação posterior.
+Um pedido com outra equipa no corpo é rejeitado com 422 antes de chegar à cache (`test_team_in_body_is_rejected_with_422`).
+Testes: `test_cache_is_not_shared_between_teams` e `test_cache_is_not_shared_between_tenants_of_the_same_team`.
 
 **22. Porque é que a elegibilidade é verificada antes de ler a cache?**
 Ler uma entrada que não devia ser lida já é um vazamento se a resposta for devolvida ou registada.
@@ -98,8 +100,25 @@ Cada repositório tem de correr e ser avaliado sozinho. Com o ModelMesh configur
 (defesa dupla). `design.md`, D0.
 
 **26. Quais são os maiores riscos de segurança?**
-Ausência de autenticação de cliente (equipa e tenant vêm do pedido) e token de administração único. Ver `security-review.md`,
-achados 1 e 2. Ambos são pendentes antes de exposição pública.
+Chaves de API estáticas no ficheiro de clientes (sem rotação nem revogação) e token de administração único. A identidade
+já não vem do corpo: vem da chave. Ver `security-review.md`, achados 1, 1b a 1d e 2. Gestão de chaves e RBAC são pendentes
+antes de exposição pública.
+
+**26b. Porque é que o pedido com `team` no corpo devolve 422 e não é simplesmente ignorado?**
+Ignorar em silêncio esconde um erro de integração: quem envia `team` acredita que a equipa conta, mas não conta. Rejeitar
+torna o erro visível de imediato. A regra de segurança é a mesma nos dois casos; a diferença é a clareza para o integrador.
+
+**26c. Porque guardar só o SHA-256 da chave e não a chave?**
+Se o ficheiro de clientes vazar, o atacante não tem chaves utilizáveis. Para chaves de API aleatórias de alta entropia, o SHA-256
+é suficiente: não há palavra de dicionário para adivinhar. Para palavras-passe escolhidas por pessoas, seria preciso uma função lenta
+(bcrypt, argon2) — e não é o caso aqui.
+
+**26d. Porque é que a autenticação compara todos os digests em vez de parar no primeiro igual?**
+Para que o tempo de resposta não revele a posição da chave válida na lista. A comparação usa `hmac.compare_digest`, em tempo constante.
+
+**26e. Porque é que a chave não define a equipa através de um prefixo ou de um cabeçalho extra?**
+Porque qualquer dado que o cliente envia pode ser alterado. Só o mapeamento no servidor (digest -> principal) é fonte de verdade.
+Um cabeçalho `X-Team` seria exatamente o mesmo problema que o corpo.
 
 **27. Porque é que os segredos são `SecretStr`?**
 Para não aparecerem em `repr`, logs ou erros de validação. `config.py`.

@@ -11,11 +11,6 @@ from app.api.serializers import attempt_json, to_jsonable, usd
 from app.routing.errors import RoutingError
 
 
-class Unauthorized(RoutingError):
-    status_code = 401
-    code = "unauthorized"
-
-
 class NotFound(RoutingError):
     status_code = 404
     code = "not_found"

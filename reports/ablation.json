@@ -1,7 +1,7 @@
 {
   "meta": {
     "date": "2026-11-21",
-    "commit": "d397900",
+    "commit": "789510e",
     "dirty": true,
     "mode": "mock (simulated)",
     "models": [
@@ -219,7 +219,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 96.313
+        "wall_ms": 63.289
       },
       {
         "policy": "always_expensive",
@@ -235,7 +235,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 44.107
+        "wall_ms": 31.823
       },
       {
         "policy": "always_expensive",
@@ -251,7 +251,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 42.531
+        "wall_ms": 30.994
       },
       {
         "policy": "always_expensive",
@@ -267,7 +267,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 56.869
+        "wall_ms": 29.823
       },
       {
         "policy": "always_expensive",
@@ -283,7 +283,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 54.969
+        "wall_ms": 28.727
       },
       {
         "policy": "always_expensive",
@@ -299,7 +299,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 52.451
+        "wall_ms": 25.486
       },
       {
         "policy": "always_expensive",
@@ -315,7 +315,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 37.424
+        "wall_ms": 29.661
       },
       {
         "policy": "always_expensive",
@@ -331,7 +331,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 43.056
+        "wall_ms": 29.841
       },
       {
         "policy": "always_expensive",
@@ -347,7 +347,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 50.194
+        "wall_ms": 32.7
       },
       {
         "policy": "always_expensive",
@@ -363,7 +363,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 66.375
+        "wall_ms": 38.242
       },
       {
         "policy": "always_expensive",
@@ -379,7 +379,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 106.765
+        "wall_ms": 31.839
       },
       {
         "policy": "always_expensive",
@@ -395,7 +395,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 56.584
+        "wall_ms": 28.523
       },
       {
         "policy": "always_expensive",
@@ -411,7 +411,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 75.664
+        "wall_ms": 29.232
       },
       {
         "policy": "always_expensive",
@@ -427,7 +427,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 48.941
+        "wall_ms": 35.925
       },
       {
         "policy": "always_expensive",
@@ -443,7 +443,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 54.108
+        "wall_ms": 29.87
       },
       {
         "policy": "always_expensive",
@@ -459,7 +459,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 74.907
+        "wall_ms": 33.384
       },
       {
         "policy": "always_expensive",
@@ -475,7 +475,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.855
+        "wall_ms": 33.144
       },
       {
         "policy": "always_expensive",
@@ -491,7 +491,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.247
+        "wall_ms": 30.528
       },
       {
         "policy": "always_expensive",
@@ -507,7 +507,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 80.226
+        "wall_ms": 27.421
       },
       {
         "policy": "always_expensive",
@@ -523,7 +523,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 52.613
+        "wall_ms": 32.025
       },
       {
         "policy": "always_expensive",
@@ -539,7 +539,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 65.68
+        "wall_ms": 36.351
       },
       {
         "policy": "always_expensive",
@@ -555,7 +555,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.371
+        "wall_ms": 28.993
       },
       {
         "policy": "always_expensive",
@@ -571,7 +571,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 53.26
+        "wall_ms": 29.561
       },
       {
         "policy": "always_expensive",
@@ -587,7 +587,7 @@
         "provider_failures": 1,
         "final_model": null,
         "sim_latency_ms": 2000.0,
-        "wall_ms": 39.452
+        "wall_ms": 28.933
       },
       {
         "policy": "always_expensive",
@@ -603,7 +603,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 56.553
+        "wall_ms": 36.86
       },
       {
         "policy": "always_expensive",
@@ -619,7 +619,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 55.995
+        "wall_ms": 36.944
       },
       {
         "policy": "always_expensive",
@@ -635,7 +635,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 38.745
+        "wall_ms": 29.784
       },
       {
         "policy": "always_expensive",
@@ -651,7 +651,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 39.688
+        "wall_ms": 30.373
       },
       {
         "policy": "always_expensive",
@@ -667,7 +667,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 47.221
+        "wall_ms": 32.944
       },
       {
         "policy": "always_expensive",
@@ -683,7 +683,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 33.268
+        "wall_ms": 28.757
       },
       {
         "policy": "always_expensive",
@@ -699,7 +699,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 50.317
+        "wall_ms": 32.944
       },
       {
         "policy": "always_expensive",
@@ -715,7 +715,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 41.881
+        "wall_ms": 29.289
       },
       {
         "policy": "always_expensive",
@@ -731,7 +731,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 44.577
+        "wall_ms": 28.802
       },
       {
         "policy": "always_expensive",
@@ -747,7 +747,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 38.416
+        "wall_ms": 31.382
       },
       {
         "policy": "always_expensive",
@@ -763,7 +763,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 43.48
+        "wall_ms": 32.203
       },
       {
         "policy": "always_expensive",
@@ -779,7 +779,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.359
+        "wall_ms": 29.753
       },
       {
         "policy": "always_expensive",
@@ -795,7 +795,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 56.666
+        "wall_ms": 31.478
       },
       {
         "policy": "always_expensive",
@@ -811,7 +811,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 46.23
+        "wall_ms": 25.755
       },
       {
         "policy": "always_expensive",
@@ -827,7 +827,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 40.758
+        "wall_ms": 31.763
       },
       {
         "policy": "always_expensive",
@@ -843,7 +843,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 36.965
+        "wall_ms": 29.829
       },
       {
         "policy": "always_expensive",
@@ -859,7 +859,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 38.181
+        "wall_ms": 30.081
       },
       {
         "policy": "always_expensive",
@@ -875,7 +875,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 65.135
+        "wall_ms": 31.332
       },
       {
         "policy": "always_expensive",
@@ -891,7 +891,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 37.821
+        "wall_ms": 28.581
       },
       {
         "policy": "always_expensive",
@@ -907,7 +907,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 50.764
+        "wall_ms": 30.187
       },
       {
         "policy": "always_expensive",
@@ -923,7 +923,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 45.683
+        "wall_ms": 29.353
       },
       {
         "policy": "always_expensive",
@@ -939,7 +939,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 50.253
+        "wall_ms": 27.748
       },
       {
         "policy": "always_expensive",
@@ -955,7 +955,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 64.695
+        "wall_ms": 29.854
       },
       {
         "policy": "always_expensive",
@@ -971,7 +971,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 43.216
+        "wall_ms": 30.505
       },
       {
         "policy": "always_expensive",
@@ -987,7 +987,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 56.86
+        "wall_ms": 30.261
       },
       {
         "policy": "always_expensive",
@@ -1003,7 +1003,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 38.799
+        "wall_ms": 30.223
       },
       {
         "policy": "always_expensive",
@@ -1019,7 +1019,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 41.822
+        "wall_ms": 31.185
       },
       {
         "policy": "always_expensive",
@@ -1035,7 +1035,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 43.532
+        "wall_ms": 25.362
       },
       {
         "policy": "always_expensive",
@@ -1051,7 +1051,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 45.061
+        "wall_ms": 28.458
       },
       {
         "policy": "always_expensive",
@@ -1067,7 +1067,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 42.529
+        "wall_ms": 29.456
       },
       {
         "policy": "always_expensive",
@@ -1083,7 +1083,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 56.784
+        "wall_ms": 35.334
       },
       {
         "policy": "always_expensive",
@@ -1099,7 +1099,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 36.407
+        "wall_ms": 30.25
       },
       {
         "policy": "always_expensive",
@@ -1115,7 +1115,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 39.239
+        "wall_ms": 29.083
       },
       {
         "policy": "always_expensive",
@@ -1131,7 +1131,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 39.166
+        "wall_ms": 35.363
       },
       {
         "policy": "always_expensive",
@@ -1147,7 +1147,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 48.236
+        "wall_ms": 28.546
       },
       {
         "policy": "always_expensive",
@@ -1163,7 +1163,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 53.999
+        "wall_ms": 31.741
       },
       {
         "policy": "always_expensive",
@@ -1179,7 +1179,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 41.885
+        "wall_ms": 30.296
       },
       {
         "policy": "always_expensive",
@@ -1195,7 +1195,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 71.403
+        "wall_ms": 30.819
       },
       {
         "policy": "always_expensive",
@@ -1211,7 +1211,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 77.001
+        "wall_ms": 38.524
       },
       {
         "policy": "always_expensive",
@@ -1227,7 +1227,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 73.152
+        "wall_ms": 27.361
       },
       {
         "policy": "always_expensive",
@@ -1243,7 +1243,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 83.593
+        "wall_ms": 32.906
       },
       {
         "policy": "always_expensive",
@@ -1259,7 +1259,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 129.848
+        "wall_ms": 29.891
       },
       {
         "policy": "always_expensive",
@@ -1275,7 +1275,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 46.584
+        "wall_ms": 99.76
       },
       {
         "policy": "always_expensive",
@@ -1291,7 +1291,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 44.295
+        "wall_ms": 32.052
       },
       {
         "policy": "always_expensive",
@@ -1307,7 +1307,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.582
+        "wall_ms": 30.839
       },
       {
         "policy": "always_expensive",
@@ -1323,7 +1323,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 60.014
+        "wall_ms": 42.277
       },
       {
         "policy": "always_expensive",
@@ -1339,7 +1339,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 50.742
+        "wall_ms": 32.458
       },
       {
         "policy": "always_expensive",
@@ -1355,7 +1355,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 41.724
+        "wall_ms": 39.437
       },
       {
         "policy": "always_expensive",
@@ -1371,7 +1371,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 156.286
+        "wall_ms": 37.17
       },
       {
         "policy": "always_expensive",
@@ -1387,7 +1387,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 33.892
+        "wall_ms": 30.299
       },
       {
         "policy": "always_expensive",
@@ -1403,7 +1403,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 53.249
+        "wall_ms": 35.101
       },
       {
         "policy": "always_expensive",
@@ -1419,7 +1419,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 58.117
+        "wall_ms": 28.9
       },
       {
         "policy": "always_expensive",
@@ -1435,7 +1435,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 60.411
+        "wall_ms": 40.664
       },
       {
         "policy": "always_expensive",
@@ -1451,7 +1451,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 68.244
+        "wall_ms": 29.052
       },
       {
         "policy": "always_expensive",
@@ -1467,7 +1467,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.237
+        "wall_ms": 31.71
       },
       {
         "policy": "always_expensive",
@@ -1483,7 +1483,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 159.641
+        "wall_ms": 30.833
       },
       {
         "policy": "always_expensive",
@@ -1499,7 +1499,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 83.062
+        "wall_ms": 29.611
       },
       {
         "policy": "always_expensive",
@@ -1515,7 +1515,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 87.33
+        "wall_ms": 29.89
       },
       {
         "policy": "always_expensive",
@@ -1531,7 +1531,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 66.599
+        "wall_ms": 28.436
       },
       {
         "policy": "always_expensive",
@@ -1547,7 +1547,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 62.028
+        "wall_ms": 29.692
       },
       {
         "policy": "always_expensive",
@@ -1563,7 +1563,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 63.523
+        "wall_ms": 28.509
       },
       {
         "policy": "always_expensive",
@@ -1579,7 +1579,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 95.211
+        "wall_ms": 36.724
       },
       {
         "policy": "always_expensive",
@@ -1595,7 +1595,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 139.773
+        "wall_ms": 32.106
       },
       {
         "policy": "always_expensive",
@@ -1611,7 +1611,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 127.074
+        "wall_ms": 29.947
       },
       {
         "policy": "always_expensive",
@@ -1627,7 +1627,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 99.958
+        "wall_ms": 27.873
       },
       {
         "policy": "always_expensive",
@@ -1643,7 +1643,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 73.526
+        "wall_ms": 30.525
       },
       {
         "policy": "always_expensive",
@@ -1659,7 +1659,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 80.659
+        "wall_ms": 31.324
       },
       {
         "policy": "always_expensive",
@@ -1675,7 +1675,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 153.265
+        "wall_ms": 27.944
       },
       {
         "policy": "always_expensive",
@@ -1691,7 +1691,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 130.647
+        "wall_ms": 29.919
       },
       {
         "policy": "always_expensive",
@@ -1707,7 +1707,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 116.488
+        "wall_ms": 32.812
       },
       {
         "policy": "always_expensive",
@@ -1723,7 +1723,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 108.034
+        "wall_ms": 32.032
       },
       {
         "policy": "always_expensive",
@@ -1739,7 +1739,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 126.795
+        "wall_ms": 29.328
       },
       {
         "policy": "always_expensive",
@@ -1755,7 +1755,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 132.665
+        "wall_ms": 32.433
       },
       {
         "policy": "always_expensive",
@@ -1771,7 +1771,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 118.886
+        "wall_ms": 30.324
       },
       {
         "policy": "always_expensive",
@@ -1787,7 +1787,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 58.427
+        "wall_ms": 31.549
       },
       {
         "policy": "always_expensive",
@@ -1803,7 +1803,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 164.257
+        "wall_ms": 30.689
       }
     ],
     "always_cheap": [
@@ -1821,7 +1821,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 251.926
+        "wall_ms": 79.432
       },
       {
         "policy": "always_cheap",
@@ -1837,7 +1837,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 95.453
+        "wall_ms": 31.573
       },
       {
         "policy": "always_cheap",
@@ -1853,7 +1853,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 203.445
+        "wall_ms": 34.896
       },
       {
         "policy": "always_cheap",
@@ -1869,7 +1869,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 235.221
+        "wall_ms": 28.621
       },
       {
         "policy": "always_cheap",
@@ -1885,7 +1885,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 175.065
+        "wall_ms": 31.479
       },
       {
         "policy": "always_cheap",
@@ -1901,7 +1901,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 210.288
+        "wall_ms": 32.179
       },
       {
         "policy": "always_cheap",
@@ -1917,7 +1917,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 158.369
+        "wall_ms": 30.091
       },
       {
         "policy": "always_cheap",
@@ -1933,7 +1933,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 275.667
+        "wall_ms": 35.431
       },
       {
         "policy": "always_cheap",
@@ -1949,7 +1949,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 158.519
+        "wall_ms": 35.435
       },
       {
         "policy": "always_cheap",
@@ -1965,7 +1965,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 488.115
+        "wall_ms": 33.325
       },
       {
         "policy": "always_cheap",
@@ -1981,7 +1981,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 467.174
+        "wall_ms": 40.054
       },
       {
         "policy": "always_cheap",
@@ -1997,7 +1997,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 569.997
+        "wall_ms": 33.31
       },
       {
         "policy": "always_cheap",
@@ -2013,7 +2013,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 775.625
+        "wall_ms": 31.619
       },
       {
         "policy": "always_cheap",
@@ -2029,7 +2029,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 202.468
+        "wall_ms": 31.006
       },
       {
         "policy": "always_cheap",
@@ -2045,7 +2045,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 231.595
+        "wall_ms": 36.511
       },
       {
         "policy": "always_cheap",
@@ -2061,7 +2061,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 78.691
+        "wall_ms": 38.905
       },
       {
         "policy": "always_cheap",
@@ -2077,7 +2077,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 58.286
+        "wall_ms": 31.65
       },
       {
         "policy": "always_cheap",
@@ -2093,7 +2093,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 55.138
+        "wall_ms": 32.645
       },
       {
         "policy": "always_cheap",
@@ -2109,7 +2109,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 76.351
+        "wall_ms": 36.845
       },
       {
         "policy": "always_cheap",
@@ -2125,7 +2125,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 64.414
+        "wall_ms": 31.344
       },
       {
         "policy": "always_cheap",
@@ -2141,7 +2141,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 79.672
+        "wall_ms": 37.835
       },
       {
         "policy": "always_cheap",
@@ -2157,7 +2157,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 59.397
+        "wall_ms": 38.134
       },
       {
         "policy": "always_cheap",
@@ -2173,7 +2173,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 47.579
+        "wall_ms": 38.687
       },
       {
         "policy": "always_cheap",
@@ -2189,7 +2189,7 @@
         "provider_failures": 1,
         "final_model": null,
         "sim_latency_ms": 300.0,
-        "wall_ms": 46.973
+        "wall_ms": 31.595
       },
       {
         "policy": "always_cheap",
@@ -2205,7 +2205,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 49.091
+        "wall_ms": 34.307
       },
       {
         "policy": "always_cheap",
@@ -2221,7 +2221,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 42.928
+        "wall_ms": 35.817
       },
       {
         "policy": "always_cheap",
@@ -2237,7 +2237,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 49.372
+        "wall_ms": 35.942
       },
       {
         "policy": "always_cheap",
@@ -2253,7 +2253,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 39.363
+        "wall_ms": 41.771
       },
       {
         "policy": "always_cheap",
@@ -2269,7 +2269,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 33.116
+        "wall_ms": 35.338
       },
       {
         "policy": "always_cheap",
@@ -2285,7 +2285,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 38.249
+        "wall_ms": 38.804
       },
       {
         "policy": "always_cheap",
@@ -2301,7 +2301,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 46.516
+        "wall_ms": 35.417
       },
       {
         "policy": "always_cheap",
@@ -2317,7 +2317,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 45.496
+        "wall_ms": 40.075
       },
       {
         "policy": "always_cheap",
@@ -2333,7 +2333,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 44.073
+        "wall_ms": 46.242
       },
       {
         "policy": "always_cheap",
@@ -2349,7 +2349,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 46.54
+        "wall_ms": 40.869
       },
       {
         "policy": "always_cheap",
@@ -2365,7 +2365,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 46.868
+        "wall_ms": 46.878
       },
       {
         "policy": "always_cheap",
@@ -2381,7 +2381,7 @@
         "provider_failures": 1,
         "final_model": null,
         "sim_latency_ms": 300.0,
-        "wall_ms": 53.109
+        "wall_ms": 45.94
       },
       {
         "policy": "always_cheap",
@@ -2397,7 +2397,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 57.287
+        "wall_ms": 67.144
       },
       {
         "policy": "always_cheap",
@@ -2413,7 +2413,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 39.777
+        "wall_ms": 48.449
       },
       {
         "policy": "always_cheap",
@@ -2429,7 +2429,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 45.925
+        "wall_ms": 53.31
       },
       {
         "policy": "always_cheap",
@@ -2445,7 +2445,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 42.324
+        "wall_ms": 47.576
       },
       {
         "policy": "always_cheap",
@@ -2461,7 +2461,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 49.52
+        "wall_ms": 38.77
       },
       {
         "policy": "always_cheap",
@@ -2477,7 +2477,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 47.768
+        "wall_ms": 57.739
       },
       {
         "policy": "always_cheap",
@@ -2493,7 +2493,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 57.29
+        "wall_ms": 42.919
       },
       {
         "policy": "always_cheap",
@@ -2509,7 +2509,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 76.686
+        "wall_ms": 44.458
       },
       {
         "policy": "always_cheap",
@@ -2525,7 +2525,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 85.312
+        "wall_ms": 41.084
       },
       {
         "policy": "always_cheap",
@@ -2541,7 +2541,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 54.442
+        "wall_ms": 34.77
       },
       {
         "policy": "always_cheap",
@@ -2557,7 +2557,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 55.144
+        "wall_ms": 39.145
       },
       {
         "policy": "always_cheap",
@@ -2573,7 +2573,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 55.26
+        "wall_ms": 54.916
       },
       {
         "policy": "always_cheap",
@@ -2589,7 +2589,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 53.429
+        "wall_ms": 47.03
       },
       {
         "policy": "always_cheap",
@@ -2605,7 +2605,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 71.161
+        "wall_ms": 38.513
       },
       {
         "policy": "always_cheap",
@@ -2621,7 +2621,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 58.874
+        "wall_ms": 44.489
       },
       {
         "policy": "always_cheap",
@@ -2637,7 +2637,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 44.376
+        "wall_ms": 51.886
       },
       {
         "policy": "always_cheap",
@@ -2653,7 +2653,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 57.901
+        "wall_ms": 46.073
       },
       {
         "policy": "always_cheap",
@@ -2669,7 +2669,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 96.39
+        "wall_ms": 37.972
       },
       {
         "policy": "always_cheap",
@@ -2685,7 +2685,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 63.388
+        "wall_ms": 48.777
       },
       {
         "policy": "always_cheap",
@@ -2701,7 +2701,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 44.433
+        "wall_ms": 50.972
       },
       {
         "policy": "always_cheap",
@@ -2717,7 +2717,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 52.304
+        "wall_ms": 42.096
       },
       {
         "policy": "always_cheap",
@@ -2733,7 +2733,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 50.603
+        "wall_ms": 53.506
       },
       {
         "policy": "always_cheap",
@@ -2749,7 +2749,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 78.264
+        "wall_ms": 60.53
       },
       {
         "policy": "always_cheap",
@@ -2765,7 +2765,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 57.089
+        "wall_ms": 60.994
       },
       {
         "policy": "always_cheap",
@@ -2781,7 +2781,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 66.447
+        "wall_ms": 45.285
       },
       {
         "policy": "always_cheap",
@@ -2797,7 +2797,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 99.916
+        "wall_ms": 42.495
       },
       {
         "policy": "always_cheap",
@@ -2813,7 +2813,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 55.171
+        "wall_ms": 41.539
       },
       {
         "policy": "always_cheap",
@@ -2829,7 +2829,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 41.569
+        "wall_ms": 77.562
       },
       {
         "policy": "always_cheap",
@@ -2845,7 +2845,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 47.67
+        "wall_ms": 46.071
       },
       {
         "policy": "always_cheap",
@@ -2861,7 +2861,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 44.674
+        "wall_ms": 54.481
       },
       {
         "policy": "always_cheap",
@@ -2877,7 +2877,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 53.591
+        "wall_ms": 84.852
       },
       {
         "policy": "always_cheap",
@@ -2893,7 +2893,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 62.976
+        "wall_ms": 47.77
       },
       {
         "policy": "always_cheap",
@@ -2909,7 +2909,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 46.936
+        "wall_ms": 49.426
       },
       {
         "policy": "always_cheap",
@@ -2925,7 +2925,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 90.616
+        "wall_ms": 53.268
       },
       {
         "policy": "always_cheap",
@@ -2941,7 +2941,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 73.502
+        "wall_ms": 60.08
       },
       {
         "policy": "always_cheap",
@@ -2957,7 +2957,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 77.022
+        "wall_ms": 79.825
       },
       {
         "policy": "always_cheap",
@@ -2973,7 +2973,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 98.539
+        "wall_ms": 91.376
       },
       {
         "policy": "always_cheap",
@@ -2989,7 +2989,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 107.095
+        "wall_ms": 72.809
       },
       {
         "policy": "always_cheap",
@@ -3005,7 +3005,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 81.117
+        "wall_ms": 72.553
       },
       {
         "policy": "always_cheap",
@@ -3021,7 +3021,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 44.418
+        "wall_ms": 80.893
       },
       {
         "policy": "always_cheap",
@@ -3037,7 +3037,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 35.362
+        "wall_ms": 56.859
       },
       {
         "policy": "always_cheap",
@@ -3053,7 +3053,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 32.059
+        "wall_ms": 38.186
       },
       {
         "policy": "always_cheap",
@@ -3069,7 +3069,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 36.645
+        "wall_ms": 64.522
       },
       {
         "policy": "always_cheap",
@@ -3085,7 +3085,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 45.309
+        "wall_ms": 62.302
       },
       {
         "policy": "always_cheap",
@@ -3101,7 +3101,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 32.769
+        "wall_ms": 47.103
       },
       {
         "policy": "always_cheap",
@@ -3117,7 +3117,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 34.885
+        "wall_ms": 49.914
       },
       {
         "policy": "always_cheap",
@@ -3133,7 +3133,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 34.645
+        "wall_ms": 63.335
       },
       {
         "policy": "always_cheap",
@@ -3149,7 +3149,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 36.269
+        "wall_ms": 41.98
       },
       {
         "policy": "always_cheap",
@@ -3165,7 +3165,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 38.79
+        "wall_ms": 36.65
       },
       {
         "policy": "always_cheap",
@@ -3181,7 +3181,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 43.001
+        "wall_ms": 46.084
       },
       {
         "policy": "always_cheap",
@@ -3197,7 +3197,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 36.545
+        "wall_ms": 50.718
       },
       {
         "policy": "always_cheap",
@@ -3213,7 +3213,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 32.593
+        "wall_ms": 37.51
       },
       {
         "policy": "always_cheap",
@@ -3229,7 +3229,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 32.262
+        "wall_ms": 70.913
       },
       {
         "policy": "always_cheap",
@@ -3245,7 +3245,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 32.956
+        "wall_ms": 56.857
       },
       {
         "policy": "always_cheap",
@@ -3261,7 +3261,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 31.327
+        "wall_ms": 92.454
       },
       {
         "policy": "always_cheap",
@@ -3277,7 +3277,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 34.511
+        "wall_ms": 149.523
       },
       {
         "policy": "always_cheap",
@@ -3293,7 +3293,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 34.314
+        "wall_ms": 132.371
       },
       {
         "policy": "always_cheap",
@@ -3309,7 +3309,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 36.493
+        "wall_ms": 87.258
       },
       {
         "policy": "always_cheap",
@@ -3325,7 +3325,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 42.652
+        "wall_ms": 60.183
       },
       {
         "policy": "always_cheap",
@@ -3341,7 +3341,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 33.83
+        "wall_ms": 51.741
       },
       {
         "policy": "always_cheap",
@@ -3357,7 +3357,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 41.999
+        "wall_ms": 52.758
       },
       {
         "policy": "always_cheap",
@@ -3373,7 +3373,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 38.739
+        "wall_ms": 56.111
       },
       {
         "policy": "always_cheap",
@@ -3389,7 +3389,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 34.833
+        "wall_ms": 55.922
       },
       {
         "policy": "always_cheap",
@@ -3405,7 +3405,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 35.611
+        "wall_ms": 52.089
       }
     ],
     "hybrid": [
@@ -3423,7 +3423,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 57.443
+        "wall_ms": 82.667
       },
       {
         "policy": "hybrid",
@@ -3439,7 +3439,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 1300.0,
-        "wall_ms": 66.064
+        "wall_ms": 96.68
       },
       {
         "policy": "hybrid",
@@ -3455,7 +3455,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 36.189
+        "wall_ms": 57.816
       },
       {
         "policy": "hybrid",
@@ -3471,7 +3471,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2800.0,
-        "wall_ms": 57.297
+        "wall_ms": 77.392
       },
       {
         "policy": "hybrid",
@@ -3487,7 +3487,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 40.605
+        "wall_ms": 57.51
       },
       {
         "policy": "hybrid",
@@ -3503,7 +3503,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 35.277
+        "wall_ms": 62.022
       },
       {
         "policy": "hybrid",
@@ -3519,7 +3519,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 37.619
+        "wall_ms": 64.734
       },
       {
         "policy": "hybrid",
@@ -3535,7 +3535,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 42.639
+        "wall_ms": 48.124
       },
       {
         "policy": "hybrid",
@@ -3551,7 +3551,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 35.655
+        "wall_ms": 76.292
       },
       {
         "policy": "hybrid",
@@ -3567,7 +3567,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 35.922
+        "wall_ms": 55.881
       },
       {
         "policy": "hybrid",
@@ -3583,7 +3583,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 40.383
+        "wall_ms": 48.028
       },
       {
         "policy": "hybrid",
@@ -3599,7 +3599,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 35.666
+        "wall_ms": 45.091
       },
       {
         "policy": "hybrid",
@@ -3615,7 +3615,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 35.419
+        "wall_ms": 50.102
       },
       {
         "policy": "hybrid",
@@ -3631,7 +3631,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 38.129
+        "wall_ms": 44.566
       },
       {
         "policy": "hybrid",
@@ -3647,7 +3647,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 44.521
+        "wall_ms": 46.407
       },
       {
         "policy": "hybrid",
@@ -3663,7 +3663,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 41.895
+        "wall_ms": 31.708
       },
       {
         "policy": "hybrid",
@@ -3679,7 +3679,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 44.96
+        "wall_ms": 34.123
       },
       {
         "policy": "hybrid",
@@ -3695,7 +3695,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 44.726
+        "wall_ms": 32.06
       },
       {
         "policy": "hybrid",
@@ -3711,7 +3711,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 37.211
+        "wall_ms": 31.929
       },
       {
         "policy": "hybrid",
@@ -3727,7 +3727,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 47.199
+        "wall_ms": 32.211
       },
       {
         "policy": "hybrid",
@@ -3743,7 +3743,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 43.183
+        "wall_ms": 30.858
       },
       {
         "policy": "hybrid",
@@ -3759,7 +3759,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 38.053
+        "wall_ms": 31.619
       },
       {
         "policy": "hybrid",
@@ -3775,7 +3775,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 36.103
+        "wall_ms": 33.895
       },
       {
         "policy": "hybrid",
@@ -3791,7 +3791,7 @@
         "provider_failures": 1,
         "final_model": null,
         "sim_latency_ms": 2000.0,
-        "wall_ms": 39.955
+        "wall_ms": 32.93
       },
       {
         "policy": "hybrid",
@@ -3807,7 +3807,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 29.718
+        "wall_ms": 35.835
       },
       {
         "policy": "hybrid",
@@ -3823,7 +3823,7 @@
         "provider_failures": 0,
         "final_model": "mock-cheap",
         "sim_latency_ms": 300.0,
-        "wall_ms": 32.055
+        "wall_ms": 41.978
       },
       {
         "policy": "hybrid",
@@ -3839,7 +3839,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 1100.0,
-        "wall_ms": 49.385
+        "wall_ms": 44.674
       },
       {
         "policy": "hybrid",
@@ -3855,7 +3855,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 39.511
+        "wall_ms": 31.315
       },
       {
         "policy": "hybrid",
@@ -3871,7 +3871,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 33.93
+        "wall_ms": 34.769
       },
       {
         "policy": "hybrid",
@@ -3887,7 +3887,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 34.604
+        "wall_ms": 36.778
       },
       {
         "policy": "hybrid",
@@ -3903,7 +3903,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 41.348
+        "wall_ms": 35.355
       },
       {
         "policy": "hybrid",
@@ -3919,7 +3919,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 40.802
+        "wall_ms": 40.739
       },
       {
         "policy": "hybrid",
@@ -3935,7 +3935,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 34.97
+        "wall_ms": 37.363
       },
       {
         "policy": "hybrid",
@@ -3951,7 +3951,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 48.883
+        "wall_ms": 35.856
       },
       {
         "policy": "hybrid",
@@ -3967,7 +3967,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 48.556
+        "wall_ms": 38.552
       },
       {
         "policy": "hybrid",
@@ -3983,7 +3983,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 37.198
+        "wall_ms": 36.012
       },
       {
         "policy": "hybrid",
@@ -3999,7 +3999,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 43.178
+        "wall_ms": 33.739
       },
       {
         "policy": "hybrid",
@@ -4015,7 +4015,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 37.05
+        "wall_ms": 39.609
       },
       {
         "policy": "hybrid",
@@ -4031,7 +4031,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 62.858
+        "wall_ms": 34.104
       },
       {
         "policy": "hybrid",
@@ -4047,7 +4047,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 52.922
+        "wall_ms": 37.85
       },
       {
         "policy": "hybrid",
@@ -4063,7 +4063,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 65.224
+        "wall_ms": 40.917
       },
       {
         "policy": "hybrid",
@@ -4079,7 +4079,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 58.332
+        "wall_ms": 32.358
       },
       {
         "policy": "hybrid",
@@ -4095,7 +4095,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 54.332
+        "wall_ms": 36.863
       },
       {
         "policy": "hybrid",
@@ -4111,7 +4111,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 88.942
+        "wall_ms": 37.226
       },
       {
         "policy": "hybrid",
@@ -4127,7 +4127,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 52.146
+        "wall_ms": 37.578
       },
       {
         "policy": "hybrid",
@@ -4143,7 +4143,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 55.73
+        "wall_ms": 31.481
       },
       {
         "policy": "hybrid",
@@ -4159,7 +4159,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 76.914
+        "wall_ms": 47.812
       },
       {
         "policy": "hybrid",
@@ -4175,7 +4175,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 71.355
+        "wall_ms": 36.404
       },
       {
         "policy": "hybrid",
@@ -4191,7 +4191,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 56.964
+        "wall_ms": 35.114
       },
       {
         "policy": "hybrid",
@@ -4207,7 +4207,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 74.458
+        "wall_ms": 50.657
       },
       {
         "policy": "hybrid",
@@ -4223,7 +4223,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 38.464
+        "wall_ms": 62.75
       },
       {
         "policy": "hybrid",
@@ -4239,7 +4239,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 45.835
+        "wall_ms": 44.503
       },
       {
         "policy": "hybrid",
@@ -4255,7 +4255,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 54.471
+        "wall_ms": 49.843
       },
       {
         "policy": "hybrid",
@@ -4271,7 +4271,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 51.666
+        "wall_ms": 37.725
       },
       {
         "policy": "hybrid",
@@ -4287,7 +4287,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.723
+        "wall_ms": 41.164
       },
       {
         "policy": "hybrid",
@@ -4303,7 +4303,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 68.184
+        "wall_ms": 92.289
       },
       {
         "policy": "hybrid",
@@ -4319,7 +4319,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 69.059
+        "wall_ms": 45.881
       },
       {
         "policy": "hybrid",
@@ -4335,7 +4335,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 89.557
+        "wall_ms": 53.718
       },
       {
         "policy": "hybrid",
@@ -4351,7 +4351,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 73.77
+        "wall_ms": 51.602
       },
       {
         "policy": "hybrid",
@@ -4367,7 +4367,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 68.896
+        "wall_ms": 93.605
       },
       {
         "policy": "hybrid",
@@ -4383,7 +4383,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 58.307
+        "wall_ms": 51.707
       },
       {
         "policy": "hybrid",
@@ -4399,7 +4399,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 43.597
+        "wall_ms": 64.577
       },
       {
         "policy": "hybrid",
@@ -4415,7 +4415,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 50.37
+        "wall_ms": 37.223
       },
       {
         "policy": "hybrid",
@@ -4431,7 +4431,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.125
+        "wall_ms": 46.31
       },
       {
         "policy": "hybrid",
@@ -4447,7 +4447,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 62.516
+        "wall_ms": 42.662
       },
       {
         "policy": "hybrid",
@@ -4463,7 +4463,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 49.573
+        "wall_ms": 39.563
       },
       {
         "policy": "hybrid",
@@ -4479,7 +4479,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 57.71
+        "wall_ms": 44.153
       },
       {
         "policy": "hybrid",
@@ -4495,7 +4495,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 62.538
+        "wall_ms": 38.125
       },
       {
         "policy": "hybrid",
@@ -4511,7 +4511,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 67.146
+        "wall_ms": 39.14
       },
       {
         "policy": "hybrid",
@@ -4527,7 +4527,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 83.688
+        "wall_ms": 38.871
       },
       {
         "policy": "hybrid",
@@ -4543,7 +4543,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 63.832
+        "wall_ms": 36.426
       },
       {
         "policy": "hybrid",
@@ -4559,7 +4559,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 52.205
+        "wall_ms": 76.278
       },
       {
         "policy": "hybrid",
@@ -4575,7 +4575,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 75.757
+        "wall_ms": 74.611
       },
       {
         "policy": "hybrid",
@@ -4591,7 +4591,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 54.963
+        "wall_ms": 69.048
       },
       {
         "policy": "hybrid",
@@ -4607,7 +4607,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2000.0,
-        "wall_ms": 60.433
+        "wall_ms": 89.442
       },
       {
         "policy": "hybrid",
@@ -4623,7 +4623,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 1000.0,
-        "wall_ms": 99.369
+        "wall_ms": 122.654
       },
       {
         "policy": "hybrid",
@@ -4639,7 +4639,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 64.744
+        "wall_ms": 77.843
       },
       {
         "policy": "hybrid",
@@ -4655,7 +4655,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 48.424
+        "wall_ms": 36.91
       },
       {
         "policy": "hybrid",
@@ -4671,7 +4671,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2800.0,
-        "wall_ms": 65.846
+        "wall_ms": 58.33
       },
       {
         "policy": "hybrid",
@@ -4687,7 +4687,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 63.299
+        "wall_ms": 42.323
       },
       {
         "policy": "hybrid",
@@ -4703,7 +4703,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 41.958
+        "wall_ms": 47.203
       },
       {
         "policy": "hybrid",
@@ -4719,7 +4719,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 49.346
+        "wall_ms": 43.365
       },
       {
         "policy": "hybrid",
@@ -4735,7 +4735,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 47.624
+        "wall_ms": 55.057
       },
       {
         "policy": "hybrid",
@@ -4751,7 +4751,7 @@
         "provider_failures": 0,
         "final_model": "mock-strong",
         "sim_latency_ms": 2800.0,
-        "wall_ms": 83.218
+        "wall_ms": 84.2
       },
       {
         "policy": "hybrid",
@@ -4767,7 +4767,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 50.729
+        "wall_ms": 53.984
       },
       {
         "policy": "hybrid",
@@ -4783,7 +4783,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 52.776
+        "wall_ms": 61.995
       },
       {
         "policy": "hybrid",
@@ -4799,7 +4799,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 37.026
+        "wall_ms": 48.19
       },
       {
         "policy": "hybrid",
@@ -4815,7 +4815,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 40.288
+        "wall_ms": 45.319
       },
       {
         "policy": "hybrid",
@@ -4831,7 +4831,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 54.707
+        "wall_ms": 47.261
       },
       {
         "policy": "hybrid",
@@ -4847,7 +4847,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 56.849
+        "wall_ms": 72.407
       },
       {
         "policy": "hybrid",
@@ -4863,7 +4863,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 67.113
+        "wall_ms": 82.706
       },
       {
         "policy": "hybrid",
@@ -4879,7 +4879,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 51.114
+        "wall_ms": 53.47
       },
       {
         "policy": "hybrid",
@@ -4895,7 +4895,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 45.806
+        "wall_ms": 57.487
       },
       {
         "policy": "hybrid",
@@ -4911,7 +4911,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 41.748
+        "wall_ms": 52.122
       },
       {
         "policy": "hybrid",
@@ -4927,7 +4927,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 43.014
+        "wall_ms": 57.755
       },
       {
         "policy": "hybrid",
@@ -4943,7 +4943,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 42.388
+        "wall_ms": 47.767
       },
       {
         "policy": "hybrid",
@@ -4959,7 +4959,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 51.813
+        "wall_ms": 61.558
       },
       {
         "policy": "hybrid",
@@ -4975,7 +4975,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 51.612
+        "wall_ms": 43.052
       },
       {
         "policy": "hybrid",
@@ -4991,7 +4991,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 44.442
+        "wall_ms": 46.872
       },
       {
         "policy": "hybrid",
@@ -5007,7 +5007,7 @@
         "provider_failures": 0,
         "final_model": "mock-mid",
         "sim_latency_ms": 800.0,
-        "wall_ms": 54.048
+        "wall_ms": 33.621
       }
     ]
   }

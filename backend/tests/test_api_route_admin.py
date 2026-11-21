@@ -9,7 +9,6 @@ ROUTE_BODY = {
     "task_type": "json_extraction",
     "input_tokens": 500,
     "requires_json": True,
-    "team": "suporte",
     "cost_ceiling_usd": "0.002",
 }
 
@@ -57,12 +56,20 @@ def test_route_returns_422_with_conflicts_when_nothing_fits(tmp_path):
     assert spy.calls == 0
 
 
-def test_route_rejects_invalid_team_name_at_the_boundary(tmp_path):
+def test_route_rejects_team_in_body_with_422(tmp_path):
     client, _, _ = _app(tmp_path)
 
-    response = client.post("/route", json={**ROUTE_BODY, "team": "Suporte Ã"})
+    response = client.post("/route", json={**ROUTE_BODY, "team": "suporte"})
 
     assert response.status_code == 422
+
+
+def test_route_without_key_is_401(tmp_path):
+    client, _, _ = _app(tmp_path)
+
+    response = client.post("/route", json=ROUTE_BODY, headers={"Authorization": ""})
+
+    assert response.status_code == 401
 
 
 def test_route_rejects_unknown_fields(tmp_path):

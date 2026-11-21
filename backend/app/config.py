@@ -18,6 +18,8 @@ class Settings(BaseSettings):
     database_url: str = f"sqlite:///{(REPO_ROOT / 'data' / 'costpilot.db').as_posix()}"
     redis_url: str | None = None
     config_dir: Path = REPO_ROOT / "config"
+    # Ficheiro de clientes (digests de chaves). Por omissão: config/clients.yaml.
+    clients_file: Path | None = None
 
     admin_token: SecretStr | None = None
     allow_policy_override: bool = False

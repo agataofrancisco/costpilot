@@ -1,4 +1,4 @@
-"""Construção de configurações e apps de teste isolados (BD SQLite em tmp, relógio fixo)."""
+"""Configurações e apps de teste isolados (BD SQLite em tmp, relógio fixo e clientes)."""
 
 from __future__ import annotations
 
@@ -8,12 +8,46 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+from app.auth.clients import hash_key
 from app.config import REPO_ROOT, Settings
 from app.container import Container, build_container
 from app.main import create_app
 from fastapi.testclient import TestClient
 
 FIXED_NOW = datetime(2026, 6, 1, 12, 0, tzinfo=UTC)
+
+# Chaves de TESTE (nunca usadas fora dos testes). Cada uma mapeia para um principal fixo.
+TEST_CLIENTS: list[dict[str, str]] = [
+    {
+        "name": "suporte",
+        "key": "chave-teste-suporte",
+        "tenant_id": "orbita-tech",
+        "team": "suporte",
+    },
+    {"name": "dados", "key": "chave-teste-dados", "tenant_id": "orbita-tech", "team": "dados"},
+    {"name": "bench", "key": "chave-teste-bench", "tenant_id": "orbita-tech", "team": "bench"},
+    {
+        "name": "marketing",
+        "key": "chave-teste-marketing",
+        "tenant_id": "orbita-tech",
+        "team": "marketing",
+    },
+    {
+        "name": "cliente-a",
+        "key": "chave-teste-cliente-a",
+        "tenant_id": "cliente-a",
+        "team": "suporte",
+    },
+    {
+        "name": "cliente-b",
+        "key": "chave-teste-cliente-b",
+        "tenant_id": "cliente-b",
+        "team": "suporte",
+    },
+]
+AUTH: dict[str, dict[str, str]] = {
+    c["name"]: {"Authorization": f"Bearer {c['key']}"} for c in TEST_CLIENTS
+}
 
 
 def mock_model(
@@ -63,6 +97,7 @@ def write_config(
     models: list[dict[str, Any]],
     prices: list[dict[str, Any]],
     teams: dict[str, dict[str, Any]],
+    clients: list[dict[str, str]] | None = None,
 ) -> Path:
     directory.mkdir(parents=True, exist_ok=True)
     shutil.copy(REPO_ROOT / "config" / "policy.yaml", directory / "policy.yaml")
@@ -71,6 +106,16 @@ def write_config(
         yaml.safe_dump({"currency": "USD", "prices": prices}), encoding="utf-8"
     )
     (directory / "teams.yaml").write_text(yaml.safe_dump({"teams": teams}), encoding="utf-8")
+    entries = [
+        {
+            "name": c["name"],
+            "tenant_id": c["tenant_id"],
+            "team": c["team"],
+            "key_sha256": hash_key(c["key"]),
+        }
+        for c in (clients if clients is not None else TEST_CLIENTS)
+    ]
+    (directory / "clients.yaml").write_text(yaml.safe_dump({"clients": entries}), encoding="utf-8")
     return directory
 
 
@@ -88,6 +133,7 @@ def build_test_app(
     allow_override: bool = False,
     admin_token: str | None = "token-de-teste",
 ) -> tuple[TestClient, Container, Any]:
+    """O cliente de teste envia por omissão a chave da equipa `suporte` (Authorization)."""
     config_dir = write_config(tmp_path / "config", models=models, prices=prices, teams=teams)
     settings = Settings(
         _env_file=None,
@@ -102,7 +148,9 @@ def build_test_app(
     )
     container = build_container(settings, adapters=adapters, clock=lambda: FIXED_NOW)
     app = create_app(settings, container)
-    return TestClient(app), container, app
+    client = TestClient(app)
+    client.headers.update(AUTH["suporte"])
+    return client, container, app
 
 
 def standard_setup() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
