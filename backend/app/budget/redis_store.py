@@ -37,6 +37,10 @@ end
 
 local spent = tonumber(redis.call('GET', spent_key) or '0')
 local reserved = tonumber(redis.call('GET', reserved_key) or '0')
+-- Active reservation IDs are unique; reject duplicates without changing ledger or expiry.
+if redis.call('HEXISTS', amounts_key, rid) == 1 then
+  return {0, spent, reserved}
+end
 if spent + reserved + amount > limit then
   return {0, spent, reserved}
 end

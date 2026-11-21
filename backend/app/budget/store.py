@@ -3,6 +3,8 @@
 Invariante: `spent + reserved <= limit` em todos os momentos, salvo quando uma reserva
 expira antes de ser reconciliada (ver `reconcile`). Esta implementação em memória serve
 para demo e testes; a versão de produção é `RedisBudgetStore` (atomicidade via Lua).
+IDs devem ser únicos durante toda a vida do pedido: a expiração não torna seguro reutilizá-los
+se o pedido original ainda puder ser reconciliado.
 """
 
 from __future__ import annotations
@@ -82,9 +84,12 @@ class InMemoryBudgetStore:
         with self._lock:
             state = self._state(team)
             self._purge_expired(state, now_ms)
+            assert state.reservations is not None
+            # Active reservation IDs are unique; reject duplicates without changing state.
+            if reservation_id in state.reservations:
+                return ReserveOutcome(False, state.spent, state.reserved)
             if state.spent + state.reserved + amount_micro > limit_micro:
                 return ReserveOutcome(False, state.spent, state.reserved)
-            assert state.reservations is not None
             state.reserved += amount_micro
             state.reservations[reservation_id] = (amount_micro, now_ms + ttl_ms)
             return ReserveOutcome(True, state.spent, state.reserved)
