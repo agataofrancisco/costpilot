@@ -28,11 +28,11 @@
 
 ## 5. Benchmark e contrafactual
 
-- [ ] 5.1 Criar o dataset de ≥100 tarefas (4 tipos) com critérios de correcção e validador; verificar com o validador
-- [ ] 5.2 Implementar o runner das 3 políticas com as métricas da spec e o juiz opcional calibrado; verificar que gera o relatório em mock marcado `simulated`
-- [ ] 5.3 Implementar a simulação contrafactual sobre logs, com `source` e `unknown` quando não há observação; verificar com teste
-- [ ] 5.4 Correr o benchmark em mock e gravar `reports/ablation.md`; verificar que os campos de portefólio estão como `TODO: medir`
-- [ ] 5.5 Escrever `docs/learn/06-contrafactual-e-ablacao.md`; verificar que os números citados vêm do relatório
+- [x] 5.1 Criar o dataset de ≥100 tarefas (4 tipos) com critérios de correcção e validador; verificar com o validador
+- [x] 5.2 Implementar o runner das 3 políticas com as métricas da spec e o juiz opcional calibrado; verificar que gera o relatório em mock marcado `simulated`
+- [x] 5.3 Implementar a simulação contrafactual sobre logs, com `source` e `unknown` quando não há observação; verificar com teste
+- [x] 5.4 Correr o benchmark em mock e gravar `reports/ablation.md`; verificar que os campos de portefólio estão como `TODO: medir`
+- [x] 5.5 Escrever `docs/learn/06-contrafactual-e-ablacao.md`; verificar que os números citados vêm do relatório
 
 ## 6. Painel e entrega
 

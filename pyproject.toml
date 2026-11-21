@@ -37,6 +37,9 @@ extend-exclude = [".venv", "frontend/node_modules"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
+# runner.py gera tabelas Markdown com linhas longas por desenho.
+[tool.ruff.lint.per-file-ignores]
+"bench/costpilot/runner.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["backend/tests"]
