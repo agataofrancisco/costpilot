@@ -19,12 +19,12 @@
 - [x] 3.1 Implementar `decide()` puro (filtros, custo esperado, alvo de qualidade, SLA) e `POST /route` com explicação; verificar com testes de escolha, exclusões e `no_eligible_model`
 - [x] 3.2 Implementar os validadores por tipo de tarefa e `POST /execute` com escalonamento, hard-limit por tentativa e contabilidade completa (retries, reasoning tokens, caching); verificar com testes de JSON inválido → escalonamento, escalonamento sem orçamento e custo das 2 tentativas
 - [x] 3.3 Implementar o interruptor por equipa, a restrição de sensibilidade e o comportamento com ModelMesh indisponível; verificar com testes
-- [ ] 3.4 Escrever `docs/learn/02-custo-por-tarefa-resolvida.md`, `03-cascata-e-escalonamento.md` e `04-priors-beta-e-historico.md`; verificar os exemplos numéricos com testes
+- [x] 3.4 Escrever `docs/learn/02-custo-por-tarefa-resolvida.md`, `03-cascata-e-escalonamento.md` e `04-priors-beta-e-historico.md`; verificar os exemplos numéricos com testes
 
 ## 4. Cache
 
-- [ ] 4.1 Implementar a cache com elegibilidade, isolamento, TTL e cabeçalho de hit; verificar com testes de temperatura > 0, equipas diferentes e hit com custo 0
-- [ ] 4.2 Escrever `docs/learn/05-cache-segura.md`; verificar que os riscos têm testes
+- [x] 4.1 Implementar a cache com elegibilidade, isolamento, TTL e cabeçalho de hit; verificar com testes de temperatura > 0, equipas diferentes e hit com custo 0
+- [x] 4.2 Escrever `docs/learn/05-cache-segura.md`; verificar que os riscos têm testes
 
 ## 5. Benchmark e contrafactual
 
