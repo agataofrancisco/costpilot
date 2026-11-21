@@ -1,0 +1,6 @@
+# Normaliza??o de fins de linha e ficheiros bin?rios
+* text=auto
+*.pdf binary
+*.png binary
+*.jpg binary
+*.sqlite binary
