@@ -16,6 +16,11 @@ class Unauthorized(RoutingError):
     code = "unauthorized"
 
 
+class NotFound(RoutingError):
+    status_code = 404
+    code = "not_found"
+
+
 class AdminDisabled(RoutingError):
     status_code = 503
     code = "admin_disabled"

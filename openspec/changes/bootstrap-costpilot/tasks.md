@@ -37,8 +37,8 @@
 ## 6. Painel e entrega
 
 - [ ] 6.1 Criar o painel (custo por equipa/provider/tarefa, gráfico custo vs qualidade, distribuição de routing, motivos, interruptor); verificar no browser
-- [ ] 6.2 Testes de integração: orçamento sob concorrência com escalonamento, preço desactualizado, model mismatch, tokens não reportados, multi-tenant e provider indisponível; verificar que passam
-- [ ] 6.3 Dockerfile, `docker-compose.yml` (marcado como não testado localmente) e CI (Ruff, pytest, `-m redis` com service, benchmark mock); verificar a validade
+- [x] 6.2 Testes de integração: orçamento sob concorrência com escalonamento, preço desactualizado, model mismatch, tokens não reportados, multi-tenant e provider indisponível; verificar que passam
+- [x] 6.3 Dockerfile, `docker-compose.yml` (marcado como não testado localmente) e CI (Ruff, pytest, `-m redis` com service, benchmark mock); verificar a validade
 - [ ] 6.4 `README.md`, `docs/architecture.md`, `docs/decisions.md` (o que o OpenRouter/LiteLLM/ModelMesh já fazem vs a contribuição) e `docs/case-study.md`; verificar os comandos
 - [ ] 6.5 `docs/learn/07-perguntas-de-entrevista.md` (≥25); verificar a consistência com o código
 - [ ] 6.6 Revisão de segurança (orçamento, cache cross-tenant, chaves); verificar que os achados estão resolvidos ou documentados

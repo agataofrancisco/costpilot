@@ -6,23 +6,24 @@ Sem token configurado, os endpoints ficam desactivados (503), nunca abertos por 
 from __future__ import annotations
 
 import hmac
+import json
 
 from fastapi import APIRouter, Depends, Header, Request
 
-from app.api.errors import AdminDisabled, Unauthorized
+from app.api.errors import AdminDisabled, NotFound, Unauthorized
 from app.api.schemas import AutopilotUpdate
 from app.api.serializers import usd
 from app.catalog.probes import run_capability_probes
-from app.routing.errors import TeamNotConfigured
+from app.config import REPO_ROOT
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 
 
 def require_admin(request: Request, x_admin_token: str | None = Header(default=None)) -> None:
-    expected = request.app.state.container.settings.admin_token
-    if not expected:
+    secret = request.app.state.container.settings.admin_token
+    if secret is None:
         raise AdminDisabled("endpoints de administração desactivados (sem COSTPILOT_ADMIN_TOKEN)")
-    if x_admin_token is None or not hmac.compare_digest(x_admin_token, expected):
+    if x_admin_token is None or not hmac.compare_digest(x_admin_token, secret.get_secret_value()):
         raise Unauthorized("token de administração inválido")
 
 
@@ -52,11 +53,7 @@ def set_autopilot(team: str, body: AutopilotUpdate, request: Request) -> dict:
     container = request.app.state.container
     config = container.router.team(team)  # levanta TeamNotConfigured se não existir
     container.settings_repo.set_autopilot(team, body.enabled)
-    return {
-        "team": team,
-        "autopilot_enabled": body.enabled,
-        "fixed_model": config.fixed_model,
-    }
+    return {"team": team, "autopilot_enabled": body.enabled, "fixed_model": config.fixed_model}
 
 
 @router.get("/catalog", dependencies=[Depends(require_admin)])
@@ -84,6 +81,41 @@ def catalog_view(request: Request) -> list[dict]:
     return rows
 
 
+@router.get("/usage/summary", dependencies=[Depends(require_admin)])
+def usage_summary(request: Request) -> dict:
+    """Custos por equipa/provider/tarefa, distribuição de routing e motivos das decisões."""
+    container = request.app.state.container
+    rows = container.usage.aggregate()
+    routing: dict[str, int] = {}
+    reasons: dict[str, int] = {}
+    for row in rows:
+        routing[row["model"]] = routing.get(row["model"], 0) + row["attempts"]
+        key = f"{row['reason']} / {row['status']}"
+        reasons[key] = reasons.get(key, 0) + row["attempts"]
+    return {
+        "groups": [{**row, "cost_usd": usd(row["cost_micro"])} for row in rows],
+        "routing": [{"model": m, "attempts": n} for m, n in sorted(routing.items())],
+        "reasons": [{"reason": r, "attempts": n} for r, n in sorted(reasons.items())],
+    }
+
+
+@router.get("/usage/recent", dependencies=[Depends(require_admin)])
+def usage_recent(request: Request, limit: int = 50) -> list[dict]:
+    limit = max(1, min(limit, 200))
+    rows = request.app.state.container.usage.recent(limit)
+    return [{**row, "cost_usd": usd(int(row["cost_micro"]))} for row in rows]
+
+
+@router.get("/benchmark", dependencies=[Depends(require_admin)])
+def benchmark() -> dict:
+    """Resumo do último benchmark (simulado). Devolve 404 se ainda não existir."""
+    path = REPO_ROOT / "reports" / "ablation.json"
+    if not path.exists():
+        raise NotFound("ainda não há relatório de benchmark (correr bench/costpilot/runner.py)")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {"meta": payload.get("meta", {}), "policies": payload.get("policies", {})}
+
+
 @router.post("/probes", dependencies=[Depends(require_admin)])
 async def run_probes(request: Request) -> list[dict]:
     """Repete as sondas de JSON mode em todos os providers configurados.
@@ -98,6 +130,3 @@ async def run_probes(request: Request) -> list[dict]:
         {"model": o.model, "capability": o.capability, "ok": o.ok, "detail": o.detail}
         for o in outcomes
     ]
-
-
-__all__ = ["TeamNotConfigured", "router"]

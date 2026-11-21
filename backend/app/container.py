@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 
 import redis
+from pydantic import SecretStr
 
 from app.accounting.db import init_schema, make_engine, make_session_factory
 from app.accounting.repository import UsageRepository
@@ -49,6 +50,10 @@ class Container:
     database_dialect: str
 
 
+def _secret(value: SecretStr | None) -> str | None:
+    return None if value is None else value.get_secret_value()
+
+
 def build_adapters(
     settings: Settings, catalog: Catalog, overrides: Mapping[str, ProviderAdapter] | None = None
 ) -> dict[str, ProviderAdapter]:
@@ -59,13 +64,13 @@ def build_adapters(
         adapters["openai_compatible"] = OpenAICompatibleAdapter(
             name="openai_compatible",
             base_url=settings.openai_base_url,
-            api_key=settings.openai_api_key,
+            api_key=_secret(settings.openai_api_key),
             timeout_seconds=settings.provider_timeout_seconds,
         )
     if settings.modelmesh_base_url:
         adapters["modelmesh"] = build_modelmesh_adapter(
             settings.modelmesh_base_url,
-            settings.modelmesh_virtual_key,
+            _secret(settings.modelmesh_virtual_key),
             settings.provider_timeout_seconds,
         )
     adapters.update(overrides or {})

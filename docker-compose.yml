@@ -1,0 +1,29 @@
+# docker-compose: NÃO TESTADO LOCALMENTE (sem Docker nesta máquina). Validar a sintaxe com
+# `docker compose config` antes de usar. Os segredos vêm de um ficheiro .env local, nunca versionado.
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      COSTPILOT_DATABASE_URL: postgresql+psycopg://costpilot:costpilot@postgres:5432/costpilot
+      COSTPILOT_REDIS_URL: redis://redis:6379/0
+      COSTPILOT_ADMIN_TOKEN: ${COSTPILOT_ADMIN_TOKEN:-}
+    depends_on:
+      - redis
+      - postgres
+
+  redis:
+    image: redis:7.4-alpine
+
+  postgres:
+    image: postgres:16.6-alpine
+    environment:
+      POSTGRES_USER: costpilot
+      POSTGRES_PASSWORD: costpilot
+      POSTGRES_DB: costpilot
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
