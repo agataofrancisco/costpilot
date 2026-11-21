@@ -35,7 +35,7 @@ class PriceEntry:
     currency: str = "USD"
 
 
-def _decimal(value: object, field_name: str) -> Decimal:
+def parse_decimal(value: object, field_name: str) -> Decimal:
     if isinstance(value, bool) or value is None:
         raise ConfigError(f"{field_name}: valor numérico em falta")
     try:
@@ -78,12 +78,14 @@ def parse_price_rows(raw: object) -> list[PriceEntry]:
         entries.append(
             PriceEntry(
                 model=model,
-                input_per_mtok=_decimal(row.get("input_per_mtok"), f"prices[{index}].input"),
-                output_per_mtok=_decimal(row.get("output_per_mtok"), f"prices[{index}].output"),
+                input_per_mtok=parse_decimal(row.get("input_per_mtok"), f"prices[{index}].input"),
+                output_per_mtok=parse_decimal(
+                    row.get("output_per_mtok"), f"prices[{index}].output"
+                ),
                 effective_date=_date(row.get("effective_date"), f"prices[{index}].effective_date"),
                 source=str(row.get("source") or "TODO: indicar fonte"),
                 cached_input_per_mtok=(
-                    None if cached is None else _decimal(cached, f"prices[{index}].cached")
+                    None if cached is None else parse_decimal(cached, f"prices[{index}].cached")
                 ),
             )
         )

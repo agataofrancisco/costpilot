@@ -30,3 +30,14 @@ def redis_url() -> str:
 @pytest.fixture
 def repo_config_dir() -> Path:
     return Path(__file__).resolve().parents[2] / "config"
+
+
+@pytest.fixture
+def fake_closed_port_url() -> str:
+    """URL de uma porta local que acabou de ser libertada: ligações são recusadas."""
+    import socket
+
+    with socket.socket() as probe:
+        probe.bind(("127.0.0.1", 0))
+        port = probe.getsockname()[1]
+    return f"http://127.0.0.1:{port}/v1"

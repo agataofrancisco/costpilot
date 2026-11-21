@@ -7,6 +7,7 @@ são sempre marcados como `simulated` nos relatórios.
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import json
 import math
@@ -49,6 +50,8 @@ class MockAdapter:
         self._oracle = oracle
 
     async def chat(self, request: ChatRequest) -> ProviderResult:
+        # Cede o controlo ao event loop, como uma chamada de rede: permite testar concorrência real.
+        await asyncio.sleep(0)
         profile = self._profiles.get(request.model)
         if profile is None:
             return ProviderFailure(FailureKind.MODEL_NOT_FOUND, "modelo mock desconhecido")

@@ -12,13 +12,13 @@
 
 - [x] 2.1 Implementar o catálogo por configuração ligado à tabela de preços e a exclusão `pricing_missing`; verificar com testes
 - [x] 2.2 Implementar as sondas de capacidade (mock/real) e `capability_mismatch`; verificar com teste de JSON mode falso
-- [ ] 2.3 Implementar o histórico por `(modelo, task_type)` com prior Beta a partir do registo de uso; verificar com teste de actualização e de `low_success_rate`
+- [x] 2.3 Implementar o histórico por `(modelo, task_type)` com prior Beta a partir do registo de uso; verificar com teste de actualização e de `low_success_rate`
 
 ## 3. Política e execução
 
-- [ ] 3.1 Implementar `decide()` puro (filtros, custo esperado, alvo de qualidade, SLA) e `POST /route` com explicação; verificar com testes de escolha, exclusões e `no_eligible_model`
-- [ ] 3.2 Implementar os validadores por tipo de tarefa e `POST /execute` com escalonamento, hard-limit por tentativa e contabilidade completa (retries, reasoning tokens, caching); verificar com testes de JSON inválido → escalonamento, escalonamento sem orçamento e custo das 2 tentativas
-- [ ] 3.3 Implementar o interruptor por equipa, a restrição de sensibilidade e o comportamento com ModelMesh indisponível; verificar com testes
+- [x] 3.1 Implementar `decide()` puro (filtros, custo esperado, alvo de qualidade, SLA) e `POST /route` com explicação; verificar com testes de escolha, exclusões e `no_eligible_model`
+- [x] 3.2 Implementar os validadores por tipo de tarefa e `POST /execute` com escalonamento, hard-limit por tentativa e contabilidade completa (retries, reasoning tokens, caching); verificar com testes de JSON inválido → escalonamento, escalonamento sem orçamento e custo das 2 tentativas
+- [x] 3.3 Implementar o interruptor por equipa, a restrição de sensibilidade e o comportamento com ModelMesh indisponível; verificar com testes
 - [ ] 3.4 Escrever `docs/learn/02-custo-por-tarefa-resolvida.md`, `03-cascata-e-escalonamento.md` e `04-priors-beta-e-historico.md`; verificar os exemplos numéricos com testes
 
 ## 4. Cache
