@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/admin': 'http://127.0.0.1:8000',
+      '/admin': process.env.COSTPILOT_API_URL || 'http://127.0.0.1:8000',
     },
   },
 })
