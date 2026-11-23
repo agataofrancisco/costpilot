@@ -88,6 +88,12 @@ test_unreachable_provider_is_unavailable PASSED
 - **TTL nas reservas**: se o processo cair a meio, o orçamento não fica bloqueado para sempre. A
   configuração obriga `reservation_ttl >= provider_timeout + 5 s` (`config.py`), porque uma reserva que
   expira antes da resposta do provider permite sobre-comprometer o orçamento.
+- **IDs das reservas**: cada tentativa usa `task_id:index`. O `task_id` tem de ser único enquanto
+  uma reconciliação atrasada ainda puder chegar. O store recusa uma segunda reserva com o mesmo ID
+  enquanto a primeira estiver ativa. Após o TTL, o ID já não está ativo; se for reutilizado antes
+  de a chamada antiga terminar, uma reconciliação tardia pode atingir a reserva nova. Por isso,
+  clientes que fornecem `task_id` devem enviar um identificador globalmente único, e não um número
+  sequencial reiniciado por processo.
 
 ## Alternativas
 
@@ -115,10 +121,10 @@ Porque a reserva pode já ter expirado e sido libertada pela purga. A reconcilia
 se existir, liberta-a; se não existir, cobra só o custo real. Em ambos os casos o `spent` fica certo.
 
 **O que acontece se um pedido morrer depois de reservar e antes de reconciliar?**
-A reserva expira ao fim do TTL e é libertada na próxima operação do orçamento. Perde-se o orçamento
-reservado durante o TTL, não o dinheiro (ainda não gasto, porque o provider não foi chamado ou não
-respondeu). Se o provider respondeu e o processo morreu, o custo fica por reconciliar: é um risco
-conhecido e documentado.
+A reserva expira ao fim do TTL e é libertada na próxima operação do orçamento. Se o provider chegou
+a processar o pedido, o custo pode ficar por reconciliar: é um risco conhecido. O `task_id` não deve
+ser reutilizado enquanto essa chamada antiga ainda puder terminar, para impedir que uma reconciliação
+tardia seja confundida com uma reserva nova.
 
 **Porque é que os montantes são inteiros?**
 Floats acumulam erro de arredondamento e o Lua trabalha com doubles. Micro-USD inteiros dão soma exacta
