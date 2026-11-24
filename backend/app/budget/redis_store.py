@@ -11,11 +11,12 @@ na próxima operação. Por isso o TTL tem de exceder o timeout do provider (ver
 
 from __future__ import annotations
 
+import hashlib
 from typing import Any
 
-from app.budget.store import BudgetSnapshot, ReserveOutcome
+from app.budget.store import BudgetSnapshot, RECONCILE_DEDUPE_TTL_MS, ReserveOutcome
 
-# KEYS: spent, reserved, reservas(hash rid->montante), expiracoes(zset rid->expira_em_ms)
+# KEYS: spent, reserved, reservas(hash rid->montante), expiracoes(zset), reconciled marker
 # ARGV: limite, montante, rid, agora_ms, expira_em_ms
 RESERVE_LUA = """
 local spent_key, reserved_key, amounts_key, expiries_key = KEYS[1], KEYS[2], KEYS[3], KEYS[4]
@@ -24,6 +25,13 @@ local amount = tonumber(ARGV[2])
 local rid = ARGV[3]
 local now_ms = ARGV[4]
 local expires_at = ARGV[5]
+
+-- A marker prevents a delayed/retried reservation from being charged again.
+if redis.call('EXISTS', KEYS[5]) == 1 then
+  local spent = tonumber(redis.call('GET', spent_key) or '0')
+  local reserved = tonumber(redis.call('GET', reserved_key) or '0')
+  return {0, spent, reserved}
+end
 
 local expired = redis.call('ZRANGEBYSCORE', expiries_key, '-inf', now_ms)
 for _, id in ipairs(expired) do
@@ -50,9 +58,13 @@ redis.call('ZADD', expiries_key, expires_at, rid)
 return {1, spent, reserved + amount}
 """
 
-# KEYS: spent, reserved, reservas, expiracoes
-# ARGV: rid, custo_real
+# KEYS: spent, reserved, reservas, expiracoes, marcador de reconciliação
+# ARGV: rid, custo_real, dedupe_ttl_ms
 RECONCILE_LUA = """
+local claimed = redis.call('SET', KEYS[5], '1', 'PX', ARGV[3], 'NX')
+if not claimed then
+  return tonumber(redis.call('GET', KEYS[1]) or '0')
+end
 local reserved_amount = redis.call('HGET', KEYS[3], ARGV[1])
 if reserved_amount then
   redis.call('DECRBY', KEYS[2], reserved_amount)
@@ -75,6 +87,11 @@ class RedisBudgetStore:
         base = f"{self._prefix}:{{{team}}}:budget"
         return [f"{base}:spent", f"{base}:reserved", f"{base}:amounts", f"{base}:expiries"]
 
+    def _reconciled_key(self, team: str, reservation_id: str) -> str:
+        base = f"{self._prefix}:{{{team}}}:budget"
+        digest = hashlib.sha256(reservation_id.encode("utf-8")).hexdigest()
+        return f"{base}:reconciled:{digest}"
+
     def reserve(
         self,
         team: str,
@@ -87,7 +104,7 @@ class RedisBudgetStore:
         if amount_micro < 0 or limit_micro < 0:
             raise ValueError("montantes negativos não são válidos")
         accepted, spent, reserved = self._reserve_script(
-            keys=self._keys(team),
+            keys=[*self._keys(team), self._reconciled_key(team, reservation_id)],
             args=[limit_micro, amount_micro, reservation_id, now_ms, now_ms + ttl_ms],
         )
         return ReserveOutcome(bool(int(accepted)), int(spent), int(reserved))
@@ -95,7 +112,14 @@ class RedisBudgetStore:
     def reconcile(self, team: str, reservation_id: str, actual_micro: int) -> int:
         if actual_micro < 0:
             raise ValueError("o custo real não pode ser negativo")
-        spent = self._reconcile_script(keys=self._keys(team), args=[reservation_id, actual_micro])
+        spent = self._reconcile_script(
+            keys=[*self._keys(team), self._reconciled_key(team, reservation_id)],
+            args=[
+                reservation_id,
+                actual_micro,
+                RECONCILE_DEDUPE_TTL_MS,
+            ],
+        )
         return int(spent)
 
     def snapshot(self, team: str) -> BudgetSnapshot:

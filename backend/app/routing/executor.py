@@ -149,6 +149,7 @@ class Executor:
             chain = chain[: self._router.policy.max_attempts]
         max_out = call.max_output_tokens or self._settings.default_max_output_tokens
         task_id = call.task_id or uuid4().hex
+        reservation_scope = uuid4().hex
 
         eligibility = cache_eligibility(
             requested=call.cache_requested,
@@ -179,6 +180,7 @@ class Executor:
             limit_micro=team.budget_micro,
             max_out=max_out,
             task_id=task_id,
+            reservation_scope=reservation_scope,
             when=when,
             entry_key=entry_key,
             cache_state="miss" if entry_key else "not_eligible",
@@ -235,6 +237,7 @@ class Executor:
         limit_micro: int,
         max_out: int,
         task_id: str,
+        reservation_scope: str,
         when: datetime,
         entry_key: str | None,
         cache_state: str,
@@ -260,6 +263,7 @@ class Executor:
                     reason=_reason(decision, index),
                     max_out=max_out,
                     task_id=task_id,
+                    reservation_scope=reservation_scope,
                     when=when,
                 )
             except BudgetExceeded as error:
@@ -338,6 +342,7 @@ class Executor:
         reason: str,
         max_out: int,
         task_id: str,
+        reservation_scope: str,
         when: datetime,
     ) -> _Outcome:
         task = call.task
@@ -351,7 +356,7 @@ class Executor:
         reserve_micro = worst_case_micro(
             price, max(task.input_tokens, estimate_tokens(chars)), max_out
         )
-        reservation = f"{task_id}:{index}"
+        reservation = f"{reservation_scope}:{index}"
         outcome = self._budget.reserve(
             team_name,
             reservation,

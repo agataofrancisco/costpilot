@@ -3,15 +3,18 @@
 Invariante: `spent + reserved <= limit` em todos os momentos, salvo quando uma reserva
 expira antes de ser reconciliada (ver `reconcile`). Esta implementação em memória serve
 para demo e testes; a versão de produção é `RedisBudgetStore` (atomicidade via Lua).
-IDs devem ser únicos durante toda a vida do pedido: a expiração não torna seguro reutilizá-los
-se o pedido original ainda puder ser reconciliado.
+IDs são únicos por execução. Reconciliações ficam deduplicadas por 30 dias; depois desse
+período, o marcador expira para limitar o crescimento do ledger.
 """
 
 from __future__ import annotations
 
 import threading
+import time
 from dataclasses import dataclass
 from typing import Protocol
+
+RECONCILE_DEDUPE_TTL_MS = 30 * 24 * 60 * 60 * 1000
 
 
 @dataclass(frozen=True, slots=True)
@@ -49,10 +52,13 @@ class _TeamState:
     spent: int = 0
     reserved: int = 0
     reservations: dict[str, tuple[int, int]] | None = None
+    reconciled: dict[str, int] | None = None
 
     def __post_init__(self) -> None:
         if self.reservations is None:
             self.reservations = {}
+        if self.reconciled is None:
+            self.reconciled = {}
 
 
 class InMemoryBudgetStore:
@@ -69,6 +75,10 @@ class InMemoryBudgetStore:
             if expires_at <= now_ms:
                 state.reserved -= amount
                 del state.reservations[rid]
+        assert state.reconciled is not None
+        for rid, expires_at in list(state.reconciled.items()):
+            if expires_at <= now_ms:
+                del state.reconciled[rid]
 
     def reserve(
         self,
@@ -85,8 +95,9 @@ class InMemoryBudgetStore:
             state = self._state(team)
             self._purge_expired(state, now_ms)
             assert state.reservations is not None
+            assert state.reconciled is not None
             # Active reservation IDs are unique; reject duplicates without changing state.
-            if reservation_id in state.reservations:
+            if reservation_id in state.reservations or reservation_id in state.reconciled:
                 return ReserveOutcome(False, state.spent, state.reserved)
             if state.spent + state.reserved + amount_micro > limit_micro:
                 return ReserveOutcome(False, state.spent, state.reserved)
@@ -99,10 +110,16 @@ class InMemoryBudgetStore:
             raise ValueError("o custo real não pode ser negativo")
         with self._lock:
             state = self._state(team)
+            now_ms = time.time_ns() // 1_000_000
+            self._purge_expired(state, now_ms)
             assert state.reservations is not None
+            assert state.reconciled is not None
+            if reservation_id in state.reconciled:
+                return state.spent
             entry = state.reservations.pop(reservation_id, None)
             if entry is not None:
                 state.reserved -= entry[0]
+            state.reconciled[reservation_id] = now_ms + RECONCILE_DEDUPE_TTL_MS
             state.spent += actual_micro
             return state.spent
 
