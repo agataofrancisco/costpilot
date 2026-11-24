@@ -31,7 +31,9 @@ def real_client(redis_url: str):
 def test_hundred_concurrent_requests_against_real_redis(real_client):
     store = RedisBudgetStore(real_client, prefix="costpilot-test")
     team = "concorrencia-teste"
-    real_client.delete(*real_client.keys(f"costpilot-test:{{{team}}}:*"))
+    existing_keys = real_client.keys(f"costpilot-test:{{{team}}}:*")
+    if existing_keys:
+        real_client.delete(*existing_keys)
     amount = usd_to_micro_ceil(Decimal("0.02"))
     limit = 1 * MICRO_PER_USD
 
@@ -47,6 +49,6 @@ def test_hundred_concurrent_requests_against_real_redis(real_client):
         accepted = list(pool.map(attempt, range(100)))
 
     snapshot = store.snapshot(team)
-    assert snapshot.spent_micro <= limit
+    assert sum(accepted) == 50
+    assert snapshot.spent_micro == limit
     assert snapshot.reserved_micro == 0
-    assert sum(accepted) == snapshot.spent_micro // amount

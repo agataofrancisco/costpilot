@@ -5,7 +5,7 @@
 - [x] 1.1 Criar `backend/app/{api,routing,catalog,providers,budget,cache,accounting}`, `bench/`, `reports/`, `frontend/` e `docs/learn/`; verificar com `git status`
 - [x] 1.2 Confirmar e fixar versões (FastAPI, Pydantic v2, httpx, redis, SQLAlchemy, Alembic, pytest, fakeredis, Ruff); `Settings`, `.env.example`, `/health`; verificar que `ruff check` e `pytest` passam
 - [x] 1.3 Implementar os adaptadores (`openai_compatible`, `modelmesh`, `mock` com perfis de qualidade e de falhas) e a taxonomia de erros; verificar com testes por tipo de falha
-- [ ] 1.4 Implementar a tabela de preços versionada, o registo de uso e a reserva/reconciliação atómica do orçamento em Redis; verificar com o teste de 100 pedidos concorrentes contra 1 USD em Redis real (`-m redis`)
+- [x] 1.4 Implementar a tabela de preços versionada, o registo de uso e a reserva/reconciliação atómica do orçamento em Redis; verificar com o teste de 100 pedidos concorrentes contra 1 USD em Redis real (`-m redis`, Redis 7.4.11, 2026-11-24)
 - [x] 1.5 Escrever `docs/learn/00-visao-geral.md` e `01-gateway-minimo-e-orcamento-atomico.md`; verificar o diagrama e a referência ao teste de concorrência
 
 ## 2. Catálogo

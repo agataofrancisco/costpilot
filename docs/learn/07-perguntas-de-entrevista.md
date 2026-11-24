@@ -69,7 +69,8 @@ Senão uma reserva expira enquanto o pedido ainda está em curso e o orçamento 
 **18. Como testaste a concorrência?**
 `test_hundred_concurrent_requests_never_exceed_one_dollar` (threads, store em memória e fakeredis) e
 `test_concurrent_requests_never_overspend_the_team_budget` (100 pedidos HTTP no mesmo loop, com escalonamento).
-Com Redis real: pendente (`test_budget_redis_real.py`, `-m redis`).
+Com Redis real 7.4.11: `test_budget_redis_real.py` (`-m redis`) passou em 2026-11-24;
+50 de 100 reservas aceites contra o teto de 1 USD.
 
 **19. Porque é que os montantes são inteiros?**
 Floats acumulam erro e o Lua trabalha com doubles. Micro-USD inteiros dão soma exacta e o arredondamento para cima é conservador.

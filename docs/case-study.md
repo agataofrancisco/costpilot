@@ -34,9 +34,14 @@ Verificações que suportam a mecânica (todas em testes automáticos, 150 a pas
 - 100 pedidos concorrentes contra um orçamento limitado nunca excedem o limite (store em memória e fakeredis);
 - cache nunca cruza equipas nem tenants.
 
+Em 2026-11-24, a prova isolada com Redis real 7.4.11 passou (`pytest -m redis`:
+`1 passed, 174 deselected`). Dos 100 pedidos concorrentes de 0,02 USD, exatamente 50 foram
+aceites; o gasto final foi 1 USD e não ficaram reservas pendentes. Esta prova cobre o orçamento,
+não a cache nem o caminho HTTP completo.
+
 ## Limitações assumidas
 
-- Sem Redis real verificado (teste `-m redis` pendente).
+- Cache Redis e caminho HTTP completo ainda não verificados com Redis real.
 - Sem providers reais: nenhuma chave foi usada.
 - Painel sem verificação visual no browser.
 - Sem autenticação de cliente (ver `security-review.md`).

@@ -65,8 +65,9 @@ python bench/costpilot/counterfactual.py
 
 ## Limitações conhecidas
 
-- **Redis real não verificado.** A concorrência do orçamento está verificada com fakeredis (Lua). O teste
-  `-m redis` existe e fica ignorado sem `COSTPILOT_TEST_REDIS_URL`.
+- **Orçamento verificado com Redis real.** Em 2026-11-24, `pytest -m redis` passou contra Redis
+  7.4.11: 50 de 100 reservas concorrentes aceites para o teto de 1 USD. A cache Redis ainda não
+  foi verificada contra um servidor real.
 - **Painel não verificado no browser.** O build passa; a verificação visual ficou pendente.
 - **Docker e docker-compose não testados localmente** (Docker não disponível).
 - **Autenticação só por chave estática (demo).** A equipa e o tenant vêm da chave (`config/clients.yaml`, só

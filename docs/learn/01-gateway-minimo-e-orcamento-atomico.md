@@ -109,10 +109,11 @@ Os testes em `backend/tests/test_budget.py` cobrem: recusa sem efeitos colaterai
 liberta orçamento, reserva expirada libertada, reconciliação tardia que ainda cobra, isolamento entre
 equipas, valores negativos rejeitados e 100 pedidos concorrentes (`test_hundred_concurrent_requests_never_exceed_one_dollar`).
 
-**Ainda não verificado contra Redis real.** O teste `backend/tests/test_budget_redis_real.py` está
-marcado com `-m redis` e é ignorado sem `COSTPILOT_TEST_REDIS_URL`. Nesta máquina não há Redis
-instalado (WSL não está disponível e o Memurai exige instalação com privilégios de administrador).
-Até correr contra um Redis real, a garantia de atomicidade é a do Lua tal como o fakeredis o executa.
+**Verificado contra Redis real em 2026-11-24.** O teste
+`backend/tests/test_budget_redis_real.py`, marcado com `-m redis`, passou contra Redis 7.4.11
+local (`1 passed, 174 deselected`). Cem reservas concorrentes de 0,02 USD contra 1 USD
+resultaram em 50 aceites, gasto final de 1 USD e zero reservas pendentes. Sem
+`COSTPILOT_TEST_REDIS_URL`, o teste continua a ser ignorado.
 
 ## Perguntas de entrevista
 

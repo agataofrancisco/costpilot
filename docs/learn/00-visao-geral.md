@@ -25,6 +25,8 @@ SKIPPED backend\tests\test_budget_redis_real.py:31: COSTPILOT_TEST_REDIS_URL nã
 ```
 
 O `skipped` é o teste contra Redis real: sem servidor acessível, não é fingido.
+Atualização de 2026-11-24: o teste isolado passou contra Redis 7.4.11
+(`1 passed, 174 deselected`); ver `01-gateway-minimo-e-orcamento-atomico.md`.
 
 ## Mapa do código
 
@@ -57,8 +59,8 @@ O ModelMesh entra como provider opcional, não como dependência.
 
 - Os perfis de qualidade dos mocks determinam os resultados em mock. Por isso os números de mock são
   marcados como `simulated` e não servem de prova de poupança real (ver `06-contrafactual-e-ablacao.md`).
-- Sem Redis real, a garantia de concorrência do orçamento fica só demonstrada com fakeredis (ver
-  `01-gateway-minimo-e-orcamento-atomico.md`).
+- A prova com Redis real cobre a concorrência do orçamento, mas não o caminho HTTP completo
+  nem a cache (ver `01-gateway-minimo-e-orcamento-atomico.md`).
 
 ## Perguntas de entrevista
 

@@ -15,7 +15,7 @@
 | 2 | Admin | Token único e partilhado; comparação em tempo constante (`hmac.compare_digest`). Endpoints desactivados sem token (503). | Média | **Resolvido** para o modelo de demo. Sem RBAC: pendente. |
 | 3 | Segredos | `COSTPILOT_ADMIN_TOKEN`, chave OpenAI e chave ModelMesh tipados como `SecretStr` (não aparecem em `repr`). | Média | **Resolvido**. |
 | 4 | Segredos no repositório | Nenhum `.env` nem chave versionados. `.gitignore` exclui `.env` e `.env.*`. `.env.example` **não foi escrito** (escrita bloqueada por regra de permissões). | Baixa | **Parcial**: documentado em `README.md`. |
-| 5 | Orçamento | Reserva atómica (Lua) com TTL. Reserva expira antes da reconciliação só se o TTL for menor que o timeout do provider; a configuração impede-o (`reservation_ttl >= timeout + 5`). | Alta se errado | **Resolvido** e testado (store em memória e fakeredis). Redis real: pendente. |
+| 5 | Orçamento | Reserva atómica (Lua) com TTL. Reserva expira antes da reconciliação só se o TTL for menor que o timeout do provider; a configuração impede-o (`reservation_ttl >= timeout + 5`). | Alta se errado | **Resolvido** e testado (store em memória, fakeredis e Redis real 7.4.11 em 2026-11-24). |
 | 6 | Orçamento | Provider que reporta mais tokens do que o máximo pedido pode gastar acima da reserva. Não há corte. | Média | **Documentado**. Mitigação: `max_tokens` do provider. |
 | 7 | Orçamento | Orçamento cumulativo, sem reposição. | Baixa | **Documentado** (TODO). |
 | 8 | Cache | Chave SHA-256 com tenant, equipa, modelo, parâmetros e mensagens; separador fora do JSON canónico. Elegibilidade estrita antes de ler. | Alta se errado | **Resolvido** e testado (`test_cache.py`, `test_integration.py`). |
@@ -35,5 +35,4 @@
    Limite de tentativas de autenticação.
 2. RBAC para os endpoints `/admin`.
 3. Limite de tamanho do corpo HTTP e limite de taxa por equipa.
-4. Verificação do orçamento com Redis real (`pytest -m redis`).
-5. CSP e política de cookies/armazenamento para o painel.
+4. CSP e política de cookies/armazenamento para o painel.
