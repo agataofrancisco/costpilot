@@ -1,85 +1,121 @@
 # CostPilot
 
-Serviço de routing que escolhe, para cada pedido, **o modelo mais barato que ainda resolve bem a tarefa**,
-e mede o **custo por tarefa resolvida** (`custo_total / tarefas_correctas`), não o preço por token.
+**Route each LLM request to the cheapest model that still gets it right, and measure cost per
+*solved* task, not price per token.**
 
-Estado: **protótipo de demo**. Todos os resultados de custo e qualidade são **simulados** (providers mock
-com preços fictícios). Não há números de poupança reais. Ver `reports/ablation.md`.
+Always using the expensive model wastes money. Always using the cheap one degrades quality and can
+end up costing more per correct answer once retries and failures are counted. CostPilot picks a
+model for each request with an explainable cascade policy. It validates the output
+programmatically, escalates only when validation fails, and charges every attempt against an atomic
+per-team budget. The headline metric is `total_cost / correct_tasks`.
 
-## O que existe
+> Prototype for demonstration. Providers are mocks with fictional prices, so the numbers below are
+> simulated and are **not** real savings.
 
-- `POST /route`: decisão explicável sem chamar nenhum provider (candidatos, exclusões com motivo, custo esperado).
-- `POST /execute`: execução em cascata com validação programática, orçamento atómico por tentativa e cache segura.
-- `/admin/*`: equipas e interruptor do autopilot, catálogo, custos por equipa/provider/tarefa, benchmark. Exige token.
-- Painel React em `frontend/` (custos, routing, motivos, custo vs qualidade, interruptor).
-- Benchmark em `bench/costpilot/` (100 tarefas sintéticas, três políticas, relatório marcado como simulado).
-- Documentação de aprendizagem em `docs/learn/` (pt-PT).
+## Highlights
 
-## Arranque local
+- **Explainable routing.** `POST /route` returns the decision without calling any provider: the
+  candidates, the exclusions with reasons, and the expected cost.
+- **Cascade with validation.** `POST /execute` tries the cheapest suitable model, validates the
+  result (JSON schema and task checks), and escalates only on failure. Every attempt is recorded.
+- **Atomic budgets.** Each attempt reserves budget before it calls the model, then reconciles the
+  real cost. 100 concurrent requests never exceed the cap, verified against a real Redis.
+- **Safe cache.** Cache keys are scoped so entries never cross teams or tenants (tested).
+- **Counterfactual benchmark.** The same 100 synthetic tasks run under three policies, plus a
+  counterfactual ablation.
+- **Admin dashboard.** A React panel shows cost by team, provider and task, cost against quality,
+  the routing distribution, exclusion reasons and the autopilot switch.
 
-Requisitos: Python 3.12 e Node 24. Sem Docker e sem Redis, a demo usa stores em memória.
+## Results (simulated, mock providers)
+
+From [`reports/ablation.md`](reports/ablation.md), seed 7:
+
+| Policy | Tasks solved | Total cost (sim.) | Escalations |
+|---|---|---|---|
+| always_expensive | 97/100 | $0.027750 | 0 |
+| always_cheap | 69/100 | $0.000910 | 0 |
+| **hybrid (CostPilot)** | **97/100** | **$0.013924** | 7 |
+
+In this simulation, the hybrid policy matches the expensive model's quality at about half the cost.
+The cheap-only policy fails 28 more tasks. **Read with care:** the quality profiles and prices are
+fictional. This shows the mechanism works (the cascade escalates exactly where the cheap model
+fails, and the budget counts every attempt). It doesn't show what real models would do. Real
+savings, p95 latency and real spend are `TODO: measure`.
+
+**Real-infrastructure proof:** 100 concurrent reservations of $0.02 against a $1 budget on real
+Redis gave exactly 50 accepted, $1.00 final spend and no dangling reservations. This was measured
+against Redis 7.4.11 and re-verified on 2026-11-27 against 7.4.12.
+
+## How a request flows
+
+```mermaid
+flowchart LR
+    C[Client<br/>API key] --> R[Routing policy<br/>quality target + prior]
+    R --> CA{Cache<br/>scoped per team}
+    CA -->|hit| OUT[Response]
+    CA -->|miss| B[Reserve budget<br/>atomic]
+    B --> M1[Cheapest model]
+    M1 --> V{Validate}
+    V -->|ok| REC[Reconcile cost] --> OUT
+    V -->|fail| B2[Reserve again] --> M2[Next model up]
+    M2 --> V
+```
+
+## Tech stack
+
+Python 3.12 · FastAPI · Redis (atomic reservation) · SQLAlchemy · Pydantic v2 · React 19 + Vite ·
+pytest + fakeredis · Ruff · Docker Compose
+
+## Run it locally (no Docker, no Redis needed)
+
+Without Redis, the demo uses in-memory stores.
 
 ```bash
 python -m venv .venv
-.venv/Scripts/pip install -e ".[dev]"          # Windows; em Linux/macOS: .venv/bin/pip
-.venv/Scripts/ruff check backend bench && .venv/Scripts/ruff format --check backend bench
-.venv/Scripts/pytest -m "not redis"            # testes; os de Redis real são ignorados sem servidor
+.venv/Scripts/pip install -e ".[dev]"
+COSTPILOT_ADMIN_TOKEN=change-me uvicorn app.main:create_app --factory --app-dir backend --port 8000
 ```
 
-API (factory, para não construir nada ao importar):
-
 ```bash
-COSTPILOT_ADMIN_TOKEN=troca-isto uvicorn app.main:create_app --factory --app-dir backend --port 8000
-# A equipa e o tenant vêm da chave de API (DEMO: cp-demo-suporte-2026). O corpo NÃO aceita team/tenant_id.
 curl -s -X POST http://127.0.0.1:8000/route \
   -H "content-type: application/json" -H "authorization: Bearer cp-demo-suporte-2026" \
   -d '{"task_type":"json_extraction","input_tokens":500,"requires_json":true,"cost_ceiling_usd":"0.002"}'
-# Sem chave ou com chave inválida: 401. Com "team" ou "tenant_id" no corpo: 422.
 ```
 
-Painel (proxy `/admin` para `127.0.0.1:8000`):
+The team and tenant come from the API key, never from the request body. A body that includes
+`team` gets a 422 response.
 
 ```bash
-cd frontend && npm ci && npm run dev     # ou: npm run build
-```
-
-Benchmark em mock (gera `reports/ablation.md` e `.json`):
-
-```bash
-python bench/costpilot/runner.py
+cd frontend && npm ci && npm run dev          # dashboard
+python bench/costpilot/runner.py              # benchmark -> reports/ablation.md
 python bench/costpilot/counterfactual.py
 ```
 
-## Configuração
+Demo API keys, for demonstration only: `cp-demo-suporte-2026`, `cp-demo-marketing-2026` and
+`cp-demo-dados-2026`. Only their SHA-256 digests are stored.
 
-- `config/models.yaml`: catálogo, capacidades declaradas e perfis de mock (os `mock-*` são fictícios).
-- `config/prices.yaml`: tabela de preços versionada (`effective_date`, USD, fonte).
-- `config/policy.yaml`: alvos de qualidade, prior, limites de tentativas.
-- `config/teams.yaml`: orçamento por equipa, modelo fixo e valor inicial do autopilot.
-- `config/clients.yaml`: chaves de API → (tenant, equipa), só com SHA-256. Chaves de demo:
-  `cp-demo-suporte-2026`, `cp-demo-marketing-2026`, `cp-demo-dados-2026`, `cp-demo-bench-2026`
-  (**só para demonstração**). Produção: `COSTPILOT_CLIENTS_FILE` aponta para um ficheiro fora do repositório.
-  Gerar um digest: `python -m app.auth.clients hash <chave>`.
-- Variáveis de ambiente com prefixo `COSTPILOT_` (ver `backend/app/config.py`). **Não há `.env.example` nesta versão**
-  (escrita bloqueada por regra de permissões): as variáveis estão documentadas em `backend/app/config.py`.
+## Quality checks
 
-## Limitações conhecidas
+```bash
+ruff check backend bench && ruff format --check backend bench
+pytest -m "not redis"                                       # 174 tests
+COSTPILOT_TEST_REDIS_URL=redis://localhost:6379/15 pytest -m redis
+```
 
-- **Orçamento verificado com Redis real.** Em 2026-11-24, `pytest -m redis` passou contra Redis
-  7.4.11: 50 de 100 reservas concorrentes aceites para o teto de 1 USD. A cache Redis ainda não
-  foi verificada contra um servidor real.
-- **Painel não verificado no browser.** O build passa; a verificação visual ficou pendente.
-- **Docker e docker-compose não testados localmente** (Docker não disponível).
-- **Autenticação só por chave estática (demo).** A equipa e o tenant vêm da chave (`config/clients.yaml`, só
-  SHA-256). Faltam gestão de chaves, rotação, RBAC e limites de taxa para produção. Ver `docs/security-review.md`.
-- **Sem migrações Alembic.** O esquema é criado no arranque (`create_all`).
-- **Sem reposição mensal de orçamento.** O orçamento é cumulativo.
+## Known limitations
 
-## Documentação
+- **Mock providers only:** no real model has been called.
+- **Partial Redis coverage:** the Redis cache and the full HTTP path haven't been verified against
+  a real Redis. Only the budget path has.
+- **Demo auth only:** static API keys, with no rotation, RBAC or rate limiting
+  ([`docs/security-review.md`](docs/security-review.md)).
+- **Simple schema handling:** no Alembic migrations (`create_all`), and budgets accumulate with no
+  monthly reset.
 
-- `docs/architecture.md`: componentes e fluxos.
-- `docs/decisions.md`: o que OpenRouter, LiteLLM e ModelMesh já fazem vs a contribuição deste projecto.
-- `docs/case-study.md`: resultados medidos e o que falta medir.
-- `docs/security-review.md`: revisão de segurança e estado de cada achado.
-- `docs/learn/`: 00 a 07, com exemplos verificados por testes.
-- `openspec/changes/bootstrap-costpilot/`: proposta, design, especificações e tarefas.
+## Documentation
+
+- [`docs/architecture.md`](docs/architecture.md), [`docs/case-study.md`](docs/case-study.md)
+- [`docs/decisions.md`](docs/decisions.md): how this differs from OpenRouter, LiteLLM and ModelMesh.
+- [`docs/learn/`](docs/learn/) (Portuguese): the minimal gateway and atomic budgets, cost per
+  solved task, cascades, Beta priors, safe caching, and counterfactual ablation, plus interview
+  questions.
