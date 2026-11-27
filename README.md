@@ -94,6 +94,14 @@ python bench/costpilot/counterfactual.py
 Demo API keys, for demonstration only: `cp-demo-suporte-2026`, `cp-demo-marketing-2026` and
 `cp-demo-dados-2026`. Only their SHA-256 digests are stored.
 
+**Docker with real Postgres and Redis.** Verified on 2026-11-27: `/health` reports
+`budget_backend: redis` and `database: postgresql`, and `/route` answers. That run also caught and
+fixed a missing PostgreSQL driver in the image.
+
+```bash
+COSTPILOT_ADMIN_TOKEN=change-me docker compose up --build
+```
+
 ## Quality checks
 
 ```bash

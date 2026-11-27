@@ -1,5 +1,5 @@
-# docker-compose: NÃO TESTADO LOCALMENTE (sem Docker nesta máquina). Validar a sintaxe com
-# `docker compose config` antes de usar. Os segredos vêm de um ficheiro .env local, nunca versionado.
+# docker-compose: Verificado com docker compose em 2026-11-27.
+# Os segredos vêm de um ficheiro .env local, nunca versionado.
 services:
   api:
     build: .

@@ -1,4 +1,4 @@
-# Imagem da API CostPilot. NÃO TESTADA LOCALMENTE (Docker não disponível nesta máquina).
+# Imagem da API CostPilot. Verificada com docker compose em 2026-11-27.
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
